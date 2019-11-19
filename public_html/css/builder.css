@@ -1,0 +1,65 @@
+#header {
+  transition: background-color 0.3s linear;
+}
+.scrolled-header {
+  background-color: #E25825 !important;
+  color: #fff;
+}
+.hero {
+  padding-left: 40px;
+  padding-right: 40px;
+  background: url("../images/bg.png") center center no-repeat;
+  background-size: 100% 100%;
+}
+.hero-image-holder {
+  background: url("../images/bob4.png") center center no-repeat;
+  background-size: contain;
+}
+.features-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.features-list label {
+  width: 100%;
+}
+@media screen and (min-width: 576px) {
+  .features-list label {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .features-list label {
+    width: 33.3%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .features-list label {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .features-list label {
+    width: 15%;
+  }
+}
+footer {
+  background-color: #222;
+  color: #fff;
+}
+footer {
+  color: #707070;
+}
+footer a {
+  color: #aaaaaa;
+}
+footer a:hover {
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .hero {
+    height: 700px;
+  }
+}
+/*# sourceMappingURL=builder.css.map */

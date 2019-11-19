@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!--    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">-->
+    <link rel="stylesheet" href="metro/css/metro-all.min.css">
+    <link rel="stylesheet" href="css/builder.css">
+
+    <title>Metro 4 Builder</title>
+
+<!--    Global site tag (gtag.js) - Google Analytics -->
+<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152879544-1"></script>-->
+<!--    <script>-->
+<!--        window.dataLayer = window.dataLayer || [];-->
+<!--        function gtag(){dataLayer.push(arguments);}-->
+<!--        gtag('js', new Date());-->
+
+<!--        gtag('config', 'UA-152879544-1');-->
+<!--    </script>-->
+
+</head>
+<body>
+    <div id="header" class="container-fluid pos-fixed fixed-top w-100 z-fixed pl-0 pr-0">
+        <nav data-role="app-bar" class="container bg-transparent pos-relative pl-0 pr-0" data-expand-point="md">
+            <a href="/" class="brand no-hover text-bold fg-white">Metro 4 Builder</a>
+            <ul class="app-bar-menu ml-auto fg-white">
+                <li><a href="#">Build</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">GitHub</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="hero bg-hero">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="cell-lg-6">
+                    <div class="display3 fg-white">
+                        <span class="reduce-2 enlarge-md">Metro 4 Builder <small>alpha</small></span>
+                    </div>
+                    <div class="text-leader2 fg-white">
+                        <div class="reduce-2 enlarge-md">
+                            Metro 4 is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins.
+                            <br>
+                            <br>
+                            Create your own Metro 4 components set in minutes with special builder...
+                        </div>
+                    </div>
+                    <div class="text-small mt-4">
+                        The assembly will be built for version: <span class="text-bold" id="assembly-version"></span>
+                    </div>
+                    <div class="mt-8">
+                        <button class="button alert" onclick="document.location.href='build.html'">Create your own set now <span class="mif-arrow-right"></span></button>
+                    </div>
+                </div>
+                <div class="cell-lg-6 d-none d-block-lg hero-image-holder">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-light d-none">
+        <div class="container pt-20 pb-20">
+            <p class="text-leader">
+                Metro 4 is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container pt-10 pb-20">
+            <div class="row">
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Support</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li><a href="https://github.com/olton/Metro4-UI-CSS/issues" class="fg-gray fg-cyan-hover no-decor">Metro 4 Issues</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Docs/issues" class="fg-gray fg-cyan-hover no-decor">Docs Issues</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Builder/issues" class="fg-gray fg-cyan-hover no-decor">Builder Issues</a></li>
+                    </ul>
+                </div>
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Download</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li><a href="https://github.com/olton/Metro-UI-CSS" class="fg-gray fg-cyan-hover no-decor">Metro 4</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Builder" class="fg-gray fg-cyan-hover no-decor">Builder</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Docs" class="fg-gray fg-cyan-hover no-decor">Metro 4 Docs</a></li>
+                    </ul>
+                </div>
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Documentation</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li><a href="https://metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 Core</a></li>
+                        <li><a href="https://react.metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 for React</a></li>
+                        <li><a href="https://morrisjdev.github.io/ng-metro4/#/" class="fg-gray fg-cyan-hover no-decor">Metro 4 for Angular</a></li>
+                    </ul>
+                </div>
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Sponsors</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li>Domain by <a href="https://imena.ua">Imena.ua</a></li>
+                        <li>Hosting by <a href="https://mirohost.net">Mirohost</a></li>
+                        <li>IDE PhpStorm by <a href="https://jetbrains.com">JetBrains</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="thin" style="background: #333">
+
+            <div class="d-flex mt-4 flex-column flex-row-md" style="color: #707070">
+                <small>Copyright 2019 by Serhii Pimenov. Developed by Serhii Pimenov. All rights reserved.</small>
+                <small class="ml-auto-md"><span class="fg-cyan">Made in </span><span class="fg-yellow">Ukraine</span></span></small>
+            </div>
+
+        </div>
+    </footer>
+
+<!--    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>-->
+    <script src="metro/js/metro.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

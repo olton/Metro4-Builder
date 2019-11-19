@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!--    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">-->
+    <link rel="stylesheet" href="metro/css/metro-all.css">
+    <link rel="stylesheet" href="css/builder.css">
+
+    <title>Build your set</title>
+    <script>
+        var metroCheckboxSetup = {
+            style: 2
+        };
+    </script>
+</head>
+<body class="m4-cloak" style="padding-top: 52px">
+    <div class="container-fluid pos-fixed fixed-top w-100 z-fixed border-bottom bd-lightGray scrolled-header">
+        <nav data-role="app-bar" class="container pos-relative bg-transparent" data-expand-point="md">
+            <a href="/" class="brand no-hover text-bold">Metro 4 Builder</a>
+            <ul class="app-bar-menu ml-auto">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Build</a></li>
+                <li><a href="#">Docs</a></li>
+                <li><a href="#">GitHub</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-fluid mb-10">
+        <div class="container">
+            <h1>Build your set</h1>
+            <hr>
+
+            <form action="javascript:" enctype="multipart/form-data" onsubmit="requestBuild(this)">
+                <div class="form-actions mt-4 mb-4 d-flex flex-align-center">
+                    <button class="button warning">Build set</button>
+                    <div class="ml-auto">
+                        <input type="checkbox" data-role="switch" data-caption="Minify" checked name="minified">
+                        <input type="checkbox" data-role="switch" data-caption="Source map" checked name="source_map">
+                    </div>
+                </div>
+                <hr>
+                <div id="selection-bar">
+                    <div class="part-required">
+                        <div class="h3">Required</div>
+                        <div class="features-list remark warning p-4">
+                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="reset.less">
+                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="m4q.js">
+                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="utilities.js">
+                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="metro.js">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions mt-4 mb-4 d-flex flex-align-center">
+                    <button class="button warning">Build set</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container pt-10 pb-20">
+            <div class="row">
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Support</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li><a href="https://github.com/olton/Metro4-UI-CSS/issues" class="fg-gray fg-cyan-hover no-decor">Metro 4 Issues</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Docs/issues" class="fg-gray fg-cyan-hover no-decor">Docs Issues</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Builder/issues" class="fg-gray fg-cyan-hover no-decor">Builder Issues</a></li>
+                    </ul>
+                </div>
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Download</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li><a href="https://github.com/olton/Metro-UI-CSS" class="fg-gray fg-cyan-hover no-decor">Metro 4</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Builder" class="fg-gray fg-cyan-hover no-decor">Builder</a></li>
+                        <li><a href="https://github.com/olton/Metro4-Docs" class="fg-gray fg-cyan-hover no-decor">Metro 4 Docs</a></li>
+                    </ul>
+                </div>
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Documentation</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li><a href="https://metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 Core</a></li>
+                        <li><a href="https://react.metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 for React</a></li>
+                        <li><a href="https://morrisjdev.github.io/ng-metro4/#/" class="fg-gray fg-cyan-hover no-decor">Metro 4 for Angular</a></li>
+                    </ul>
+                </div>
+                <div class="cell-md-3">
+                    <div class="text-upper text-bold">Sponsors</div>
+                    <ul class="no-style ml-0 reduce-1">
+                        <li>Domain by <a href="https://imena.ua">Imena.ua</a></li>
+                        <li>Hosting by <a href="https://mirohost.net">Mirohost</a></li>
+                        <li>IDE PhpStorm by <a href="https://jetbrains.com">JetBrains</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="thin" style="background: #333">
+
+            <div class="d-flex mt-4 flex-column flex-row-md" style="color: #707070">
+                <small>Copyright 2019 by Serhii Pimenov. Developed by Serhii Pimenov. All rights reserved.</small>
+                <small class="ml-auto-md"><span class="fg-cyan">Made in </span><span class="fg-yellow">Ukraine</span></span></small>
+            </div>
+
+        </div>
+    </footer>
+
+    <!--    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>-->
+    <script src="metro/js/metro.js"></script>
+    <script src="js/build.js"></script>
+</body>
+</html>
