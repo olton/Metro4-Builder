@@ -11,8 +11,8 @@ define("OUT_DIR", __DIR__."/output/");
 
 $copyright = <<<COPYRIGHT
 /*
- * Metro 4 Components Library v4.3.4  (https://metroui.org.ua)
- * Copyright 2012-2019 by Serhii Pimenov (https://pimenov.com.ua). All rights reserved.
+ * Metro 4 Components Library %VER%  (https://metroui.org.ua)
+ * Copyright 2012-%YEAR% by Serhii Pimenov (https://pimenov.com.ua). All rights reserved.
  * Built at %TIME%
  * Licensed under MIT
  */
@@ -189,7 +189,7 @@ foreach ($special as $css) {
 }
 
 // Concat less files
-$less_file_content = str_replace("%TIME%", date("d/m/Y H:i:s"), $copyright) . "\n\n";
+$less_file_content = str_replace(["%TIME%", "%VER%", "%%YEAR"], [date("d/m/Y H:i:s"), $package["version"], date("Y")], $copyright) . "\n\n";
 foreach ($css_build_array as $key=>$arr) {
     foreach ($css_build_array[$key] as $less_file) {
         if ($less_file !== "") {
@@ -209,7 +209,7 @@ fclose($less_file);
 
 // Create js file
 
-$js_file_content = str_replace("%TIME%", date("d/m/Y H:i:s"), $copyright) . "\n\n";
+$js_file_content = str_replace(["%TIME%", "%VER%", "%%YEAR"], [date("d/m/Y H:i:s"), $package["version"], date("Y")], $copyright) . "\n\n";
 $js_file_content .= "\n" . $js_header . "\n";
 
 $js_build_array["required"][] = addJs("source/m4q/m4q.js");
