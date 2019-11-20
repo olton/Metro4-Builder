@@ -1,4 +1,8 @@
 {
+    "setup": {
+        "release": "4.3.3",
+        "next": "4.3.4"
+    },
     "common-css": [
         {
             "name": "Common CSS",
@@ -307,7 +311,7 @@
                 "js": ["donut.js"]
             }
         },
-        "drug-items": {
+        "drag-items": {
             "name": "Drag items",
             "path": "components/drag-items",
             "content": {

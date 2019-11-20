@@ -9,7 +9,8 @@ $(function(){
         }
     };
 
-    $.json("source/package.json").then(function(package){
-        $("#assembly-version").text(package.version);
+    $.json("config.json").then(function(config){
+        $("#assembly-version-release").text(config.setup.release);
+        $("#assembly-version-next").text(config.setup.next);
     })
 });

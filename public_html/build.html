@@ -34,11 +34,14 @@
             <hr>
 
             <form action="javascript:" enctype="multipart/form-data" onsubmit="requestBuild(this)">
-                <div class="form-actions mt-4 mb-4 d-flex flex-align-center">
-                    <button class="button warning">Build set</button>
-                    <div class="ml-auto">
+                <div class="form-actions mt-4 mb-4 d-flex flex-wrap flex-align-center">
+                    <div class="text-center text-left-md w-100 w-auto-md">
+                        <button class="button warning">Build set</button>
+                    </div>
+                    <div class="ml-auto-md mt-4 mt-0-md w-100 w-auto-md d-flex flex-justify-center">
                         <input type="checkbox" data-role="switch" data-caption="Minify" checked name="minified">
-                        <input type="checkbox" data-role="switch" data-caption="Source map" checked name="source_map">
+                        <input type="checkbox" data-role="switch" data-caption="Map" checked name="source_map">
+                        <input type="checkbox" data-role="switch" data-caption="Dev" name="build_from_dev">
                     </div>
                 </div>
                 <hr>

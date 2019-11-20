@@ -41,7 +41,10 @@ return Metro;
 }));
 JS_FOOTER;
 
-$package = json_decode(file_get_contents("source/package.json"), true);
+$local = false;
+$package_path = $local ? "source/" : "https://raw.githubusercontent.com/olton/Metro-UI-CSS/master/";
+$source_path = $local  ? "source/" : "https://raw.githubusercontent.com/olton/Metro-UI-CSS/master/source/";
+$package = json_decode(file_get_contents($package_path . "package.json"), true);
 $config = json_decode(file_get_contents("config.json"), true);
 $ver_number = $package['version'];
 
@@ -54,6 +57,11 @@ $icons = isset($_POST["icons"]) ? $_POST["icons"] : [];
 
 $minified = isset($_POST["minified"]);
 $source_map = isset($_POST["source_map"]);
+$build_from_dev = isset($_POST["build_from_dev"]);
+
+if ($build_from_dev) {
+    $source_path = str_replace("master", $config["setup"]["next"], $source_path);
+}
 
 $hash = "metro4-$ver_number-".md5(""
     .implode($common_css)
@@ -64,6 +72,7 @@ $hash = "metro4-$ver_number-".md5(""
     .implode($icons)
     .($minified ? "minified" : "")
     .($source_map ? "source-map" : "")
+    .($build_from_dev ? "build-from-dev" : "")
 );
 
 $archive = $hash . ".zip";
@@ -153,27 +162,27 @@ function addJs($path){
 $mixins = ["vars", "mixins", "default-icons"];
 
 foreach ($mixins as $css) {
-    $css_build_array["mixins"][] = addCss("source/include/$css.less");
+    $css_build_array["mixins"][] = addCss($source_path . "include/$css.less");
 }
 
-$css_build_array["required"][] = addCss("source/common/less/reset.less");
+$css_build_array["required"][] = addCss($source_path . "common/less/reset.less");
 
 foreach ($common_css as $css) {
-    $css_build_array["common"][] = addCss("source/common/less/$css.less");
+    $css_build_array["common"][] = addCss($source_path . "common/less/$css.less");
 }
 foreach ($animations as $css) {
-    $css_build_array["animation"][] = addCss("source/animations/$css/$css.less");
+    $css_build_array["animation"][] = addCss($source_path . "animations/$css/$css.less");
 }
 
 function addComponentCss($name, $component){
-    global $config, $css_build_array;
+    global $config, $css_build_array, $source_path;
     $css_files = isset($component["content"]["less"]) ? $component["content"]["less"] : [];
     $deps = isset($component["dependencies"]) ? $component["dependencies"] : [];
     foreach ($css_files as $css) {
-        $css_build_array["components"][] = addCss("source/components/$name/$css");
+        $css_build_array["components"][] = addCss($source_path . "components/$name/$css");
     }
     if (isset($deps["common-css"])) foreach ($deps["common-css"] as $c) {
-        $css_build_array["common"][] = addCss("source/common/less/$c.less");
+        $css_build_array["common"][] = addCss($source_path . "common/less/$c.less");
     }
     if (isset($deps["components"])) foreach ($deps["components"] as $c) {
         addComponentCss($c, $config["components"][$c]);
@@ -185,7 +194,7 @@ foreach ($components as $component) {
 }
 
 foreach ($special as $css) {
-    $css_build_array["special"][] = addCss("source/common/less/$css.less");
+    $css_build_array["special"][] = addCss($source_path . "common/less/$css.less");
 }
 
 // Concat less files
@@ -193,8 +202,11 @@ $less_file_content = str_replace(["%TIME%", "%VER%", "%%YEAR"], [date("d/m/Y H:i
 foreach ($css_build_array as $key=>$arr) {
     foreach ($css_build_array[$key] as $less_file) {
         if ($less_file !== "") {
-            $less_file_content .= "/* ".$less_file . " */\n\n";
-            $less_file_content .= str_replace($less_replace_array, "", file_get_contents($less_file)) . "\n\n";
+            $file_content = @file_get_contents($less_file);
+            if ($file_content !== false) {
+                $less_file_content .= "/* ".$less_file . " */\n\n";
+                $less_file_content .= str_replace($less_replace_array, "", $file_content) . "\n\n";
+            }
         }
     }
 }
@@ -212,23 +224,23 @@ fclose($less_file);
 $js_file_content = str_replace(["%TIME%", "%VER%", "%%YEAR"], [date("d/m/Y H:i:s"), $package["version"], date("Y")], $copyright) . "\n\n";
 $js_file_content .= "\n" . $js_header . "\n";
 
-$js_build_array["required"][] = addJs("source/m4q/m4q.js");
-$js_build_array["required"][] = addJs("source/metro.js");
-$js_build_array["required"][] = addJs("source/common/js/utilities.js");
+$js_build_array["required"][] = addJs($source_path . "m4q/m4q.js");
+$js_build_array["required"][] = addJs($source_path . "metro.js");
+$js_build_array["required"][] = addJs($source_path . "common/js/utilities.js");
 
 foreach ($common_js as $js) {
-    $js_build_array["common"][] = addJs("source/common/js/$js.js");
+    $js_build_array["common"][] = addJs($source_path . "common/js/$js.js");
 }
 
 function addComponentJs($name, $component){
-    global $config, $js_build_array;
+    global $config, $js_build_array, $source_path;
     $js_files = isset($component["content"]["js"]) ? $component["content"]["js"] : [];
     $deps = isset($component["dependencies"]) ? $component["dependencies"] : [];
     foreach ($js_files as $js) {
-        $js_build_array["components"][] = addJs("source/components/$name/$js");
+        $js_build_array["components"][] = addJs($source_path . "components/$name/$js");
     }
     if (isset($deps["common-js"])) foreach ($deps["common-js"] as $c) {
-        $js_build_array["common"][] = addCss("source/common/js/$c.js");
+        $js_build_array["common"][] = addCss($source_path . "common/js/$c.js");
     }
     if (isset($deps["components"])) foreach ($deps["components"] as $c) {
         addComponentJs($c, $config["components"][$c]);
@@ -242,8 +254,11 @@ foreach ($components as $component) {
 foreach ($js_build_array as $key=>$arr) {
     foreach ($js_build_array[$key] as $js_file) {
         if ($js_file !== "") {
-            $js_file_content .= "/* ".$js_file . " */\n\n";
-            $js_file_content .= str_replace($js_replace_array, $js_replace_array_to, file_get_contents($js_file)) . "\n\n";
+            $file_content = @file_get_contents($js_file);
+            if ($file_content !== false) {
+                $js_file_content .= "/* ".$js_file . " */\n\n";
+                $js_file_content .= str_replace($js_replace_array, $js_replace_array_to, $file_content) . "\n\n";
+            }
         }
     }
 }

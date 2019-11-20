@@ -1,7 +1,7 @@
 /*
  * Metro 4 Components Library v4.3.4  (https://metroui.org.ua)
  * Copyright 2012-2019 Sergey Pimenov
- * Built at 17/11/2019 14:17:45
+ * Built at 20/11/2019 11:17:15
  * Licensed under MIT
  */
 
@@ -258,7 +258,7 @@ function normalizeEventName(name) {
         return;
     }
 
-    // console.log("Promise polyfill v1.2.0");
+    // 
 
     var PENDING = 'pending';
     var SEALED = 'sealed';
@@ -563,7 +563,7 @@ function normalizeEventName(name) {
 
 // Source: src/core.js
 
-var m4qVersion = "v1.0.4. Built at 17/11/2019 14:16:03";
+var m4qVersion = "v1.0.4. Built at 20/11/2019 10:29:25";
 var regexpSingleTag = /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i;
 
 var matches = Element.prototype.matches
@@ -617,7 +617,7 @@ $.extend = $.fn.extend = function(){
     return target;
 };
 
-if (typeof window["hideM4QVersion"] === "undefined") console.log("m4q "+$.version);
+if (typeof window["hideM4QVersion"] === "undefined") 
 
 // Source: src/interval.js
 
@@ -1636,7 +1636,7 @@ $.extend({
     eventUID: -1,
 
     /*
-    * el, eventName, handler, selector, ns, id
+    * el, eventName, handler, selector, ns, id, options
     * */
     setEventHandler: function(obj){
         var i, freeIndex = -1, eventObj, resultIndex;
@@ -1655,7 +1655,8 @@ $.extend({
             handler: obj.handler,
             selector: obj.selector,
             ns: obj.ns,
-            id: obj.id
+            id: obj.id,
+            options: obj.options
         };
 
         if (freeIndex === -1) {
@@ -1679,7 +1680,7 @@ $.extend({
 
     off: function(){
         $.each(this.events, function(){
-            this.element.removeEventListener(this.event, this.handler);
+            this.element.removeEventListener(this.event, this.handler, true);
         });
         this.events = [];
         return this;
@@ -1801,7 +1802,8 @@ $.fn.extend({
                     handler: h,
                     selector: sel,
                     ns: ns,
-                    id: $.eventUID
+                    id: $.eventUID,
+                    options: !isEmptyObject(options) ? options : false
                 });
                 $(el).origin('event-'+originEvent, index);
             });
@@ -1819,13 +1821,14 @@ $.fn.extend({
     },
 
     off: function(eventsList, sel, options){
-        if (!isPlainObject(options)) {
-            options = {};
-        }
 
         if (isPlainObject(sel)) {
             options = sel;
             sel = null;
+        }
+
+        if (!isPlainObject(options)) {
+            options = {};
         }
 
         if (not(eventsList) || eventsList.toLowerCase() === 'all') {
@@ -1834,7 +1837,7 @@ $.fn.extend({
                 $.each($.events, function(){
                     var e = this;
                     if (e.element === el) {
-                        el.removeEventListener(e.event, e.handler);
+                        el.removeEventListener(e.event, e.handler, e.options);
                         e.handler = null;
                         $(el).origin("event-"+name+(e.selector ? ":"+e.selector:"")+(e.ns ? ":"+e.ns:""), null);
                     }
@@ -1854,7 +1857,8 @@ $.fn.extend({
                 index = $(el).origin(originEvent);
 
                 if (index !== undefined && $.events[index].handler) {
-                    el.removeEventListener(name, $.events[index].handler);
+                    el.removeEventListener(name, $.events[index].handler, $.events[index].options);
+                    
                     $.events[index].handler = null;
                 }
 
@@ -1925,8 +1929,8 @@ $.fn.extend( {
     }
 });
 
-$.ready = function(fn){
-    document.addEventListener('DOMContentLoaded', fn);
+$.ready = function(fn, options){
+    document.addEventListener('DOMContentLoaded', fn, (options || false));
 };
 
 $.load = function(fn){
@@ -2551,7 +2555,7 @@ $.fn.extend({
                 });
             } else {
                 el.setAttribute(name, val);
-                // console.log(name, val);
+                // 
             }
         });
     },
@@ -3790,7 +3794,7 @@ var normalizeComponentName = function(name){
 var Metro = {
 
     version: "4.3.4",
-    compileTime: "17/11/2019 14:17:53",
+    compileTime: "20/11/2019 11:17:24",
     buildNumber: "742",
     isTouchable: isTouch,
     fullScreenEnabled: document.fullscreenEnabled,
@@ -3952,8 +3956,8 @@ var Metro = {
     hotkeys: {},
 
     about: function(){
-        console.log("Metro 4 - v" + Metro.version +". "+ Metro.showCompileTime());
-        console.log("m4q - " + m4q.version);
+        console.info("Metro 4 - v" + Metro.version +". "+ Metro.showCompileTime());
+        console.info("m4q - " + m4q.version);
     },
 
     showCompileTime: function(){
@@ -4031,7 +4035,7 @@ var Metro = {
                     }
 
                 } else  {
-                    //console.log(mutation);
+                    //
                 }
             });
         };
@@ -4082,8 +4086,6 @@ var Metro = {
             var element = $(this);
             var hotkey = element.attr('data-hotkey') ? element.attr('data-hotkey').toLowerCase() : false;
             var fn = element.attr('data-hotkey-func') ? element.attr('data-hotkey-func') : false;
-
-            //console.log(element);
 
             if (hotkey === false) {
                 return;
@@ -4194,7 +4196,7 @@ var Metro = {
             element["msRequestFullscreen"]();
         } else {
             element.requestFullscreen().catch( function(err){
-                console.log("Error attempting to enable full-screen mode: "+err.message+" "+err.name);
+                console.warn("Error attempting to enable full-screen mode: "+err.message+" "+err.name);
             });
         }
     },
@@ -4210,7 +4212,7 @@ var Metro = {
             document["msExitFullscreen"]();
         } else {
             document.exitFullscreen().catch( function(err){
-                console.log("Error attempting to disable full-screen mode: "+err.message+" "+err.name);
+                console.warn("Error attempting to disable full-screen mode: "+err.message+" "+err.name);
             });
         }
     },
@@ -5124,7 +5126,7 @@ var Colors = {
         hsv = this.toHSV(color);
 
         if (this.isHSV(hsv) === false) {
-            console.log("The value is a not supported color format!");
+            console.warn("The value is a not supported color format!");
             return false;
         }
 
@@ -5296,7 +5298,7 @@ var Colors = {
                 scheme.push({h: h, s: s, v: v});
                 break;
 
-            default: console.log("Unknown scheme name");
+            default: console.warn("Unknown scheme name " + name);
         }
 
         return convert(scheme, format);
@@ -6592,6 +6594,10 @@ var Utils = {
 
     isQ: function(el){
         return Utils.isJQuery(el) || Utils.isM4Q(el);
+    },
+
+    isIE11: function(){
+        return !!window.MSInputMethodContext && !!document["documentMode"];
     },
 
     embedObject: function(val){
@@ -9070,8 +9076,6 @@ var Calendar = {
             var target;
             var list = element.find(".months-list");
 
-            console.log("ku");
-
             list.find(".active").removeClass("active");
             list.scrollTop(0);
             element.find(".calendar-months").addClass("open");
@@ -9304,12 +9308,10 @@ var Calendar = {
 
             d.data('day', first.getTime());
 
-            // console.log(this.show.getTime() === first.getTime());
             if (this.show.getTime() === first.getTime()) {
                 d.addClass("showed");
             }
 
-            // console.log(this.today.getTime() === first.getTime());
             if (this.today.getTime() === first.getTime()) {
                 d.addClass("today").addClass(o.clsToday);
             }
@@ -12373,7 +12375,7 @@ var Cube = {
                 this.rules = JSON.parse(rules);
                 return true;
             } catch (err) {
-                console.log("Unknown or empty rules for cell flashing!");
+                console.warn("Unknown or empty rules for cell flashing!");
                 return false;
             }
         }
@@ -19307,7 +19309,7 @@ var Panel = {
         }
 
         if (title.length === 0) {
-            console.log("No place for custom buttons");
+            console.warn("No place for custom buttons");
             return ;
         }
 
@@ -23568,8 +23570,9 @@ var Splitter = {
     _createEvents: function(){
         var that = this, element = this.element, o = this.options;
         var gutters = element.children(".gutter");
+        var id = element.attr("id");
 
-        gutters.on(Metro.events.start, function(e){
+        gutters.on(Metro.events.startAll, function(e){
             var w = o.splitMode === "horizontal" ? element.width() : element.height();
             var gutter = $(this);
             var prev_block = gutter.prev(".split-block");
@@ -23591,7 +23594,7 @@ var Splitter = {
                 nextBlock: next_block[0]
             });
 
-            $(window).on(Metro.events.move, function(e){
+            $(window).on(Metro.events.moveAll, function(e){
                 var pos = Utils.getCursorPosition(element[0], e);
                 var new_pos;
 
@@ -23612,10 +23615,11 @@ var Splitter = {
                     prevBlock: prev_block[0],
                     nextBlock: next_block[0]
                 });
-            }, {ns: element.attr("id")});
+            }, {ns: id});
 
-            $(window).on(Metro.events.stop, function(e){
+            $(window).on(Metro.events.stopAll, function(e){
                 var cur_pos;
+
 
                 prev_block.removeClass("stop-pointer");
                 next_block.removeClass("stop-pointer");
@@ -23624,8 +23628,8 @@ var Splitter = {
 
                 gutter.removeClass("active");
 
-                $(window).off(Metro.events.move,{ns: element.attr("id")});
-                $(window).off(Metro.events.stop,{ns: element.attr("id")});
+                $(window).off(Metro.events.moveAll,{ns: id});
+                $(window).off(Metro.events.stopAll,{ns: id});
 
                 cur_pos = Utils.getCursorPosition(element[0], e);
 
@@ -23636,7 +23640,7 @@ var Splitter = {
                     prevBlock: prev_block[0],
                     nextBlock: next_block[0]
                 });
-            }, {ns: element.attr("id")})
+            }, {ns: id})
         });
     },
 
@@ -24432,8 +24436,6 @@ var Streamer = {
                 var dir = ev.deltaY < 0 ? -1 : 1;
                 var step = 100;
 
-                //console.log(ev.deltaY);
-
                 if (ev.deltaY === undefined) {
                     return ;
                 }
@@ -25195,7 +25197,6 @@ var Table = {
 
             $.json(viewPath, (viewPath !== o.viewSavePath ? null : {id: id}))
             .then(function(view){
-                console.log("view", view);
                 if (Utils.isValue(view) && Utils.objectLength(view) === Utils.objectLength(that.view)) {
                     that.view = view;
                     Utils.exec(o.onViewGet, [view], element[0]);
@@ -26059,7 +26060,6 @@ var Table = {
                 id : element.attr("id"),
                 view : view
             };
-            console.log(view);
             $.post(viewPath, post_data)
                 .then(function(data){
                     Utils.exec(o.onViewSave, [o.viewSavePath, view, post_data, data], element[0]);
@@ -26420,7 +26420,7 @@ var Table = {
             });
         }
         if (Utils.isNull(fieldIndex)) {
-            console.log('Item is undefined for update. Field ' + field + ' not found in data structure');
+            console.warn('Item is undefined for update. Field ' + field + ' not found in data structure');
             return this;
         }
 
@@ -31673,7 +31673,6 @@ var Window = {
 
             element.append(o.content);
             o.content = element;
-            // console.log(o.content);
         }
 
         if (o._runtime === true) {
@@ -31823,7 +31822,7 @@ var Window = {
             } else if (typeof o.customButtons === "object" && Utils.objectLength(o.customButtons) > 0) {
                 customButtons = o.customButtons;
             } else {
-                console.log("Unknown format for custom buttons");
+                console.warn("Unknown format for custom buttons");
             }
 
             $.each(customButtons, function(){
@@ -32289,7 +32288,7 @@ Metro['window'] = {
 
         w_options._runtime = true;
 
-        return w.window(w_options);
+        return Metro.makePlugin(w, "window", w_options);
     }
 };
 

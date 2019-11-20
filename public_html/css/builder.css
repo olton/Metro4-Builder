@@ -1,5 +1,6 @@
 #header {
   transition: background-color 0.3s linear;
+  background-color: #E25825 !important;
 }
 .scrolled-header {
   background-color: #E25825 !important;
@@ -30,6 +31,9 @@
   }
 }
 @media screen and (min-width: 768px) {
+  #header {
+    background-color: transparent !important;
+  }
   .features-list label {
     width: 33.3%;
   }
