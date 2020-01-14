@@ -1,7 +1,7 @@
 {
     "setup": {
-        "release": "4.3.3",
-        "next": "4.3.4"
+        "release": "4.3.4",
+        "next": "4.3.5"
     },
     "common-css": [
         {
@@ -167,6 +167,9 @@
             "content": {
                 "less": ["calendar.less"],
                 "js": ["calendar.js"]
+            },
+            "dependencies": {
+                "common-js": ["i18n", "date-ext", "string-ext"]
             }
         },
         "calendarpicker": {
@@ -292,6 +295,7 @@
                 "js": ["datepicker.js"]
             },
             "dependencies": {
+                "common-js": ["i18n", "date-ext", "string-ext"],
                 "components": ["wheelpicker"]
             }
         },

@@ -61,9 +61,10 @@ $build_from_dev = isset($_POST["build_from_dev"]);
 
 if ($build_from_dev) {
     $source_path = str_replace("master", $config["setup"]["next"], $source_path);
+    $ver_number = $config["setup"]["next"];
 }
 
-$hash = "metro4-$ver_number-".md5(""
+$hash = "metro4-$ver_number-".($build_from_dev ? "dev-":"").md5(""
     .implode($common_css)
     .implode($common_js)
     .implode($animations)
@@ -240,7 +241,7 @@ function addComponentJs($name, $component){
         $js_build_array["components"][] = addJs($source_path . "components/$name/$js");
     }
     if (isset($deps["common-js"])) foreach ($deps["common-js"] as $c) {
-        $js_build_array["common"][] = addCss($source_path . "common/js/$c.js");
+        $js_build_array["common"][] = addJs($source_path . "common/js/$c.js");
     }
     if (isset($deps["components"])) foreach ($deps["components"] as $c) {
         addComponentJs($c, $config["components"][$c]);
