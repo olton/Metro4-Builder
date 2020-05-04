@@ -1,502 +1,469 @@
 {
     "setup": {
-        "release": "4.3.4",
-        "next": "4.3.5"
+        "release": "4.3.7",
+        "next": "4.3.8"
     },
-    "common-css": [
-        {
-            "name": "Common CSS",
-            "path": "common/less",
-            "content": [
-                "accent-colors.less",
-                "border.less",
-                "cursors.less",
-                "default-icons.less",
-                "display.less",
-                "embed.less",
-                "flex.less",
-                "float.less",
-                "images.less",
-                "inputs.less",
-                "lists.less",
-                "overlay.less",
-                "position.less",
-                "shadow.less",
-                "sizing.less",
-                "spacing.less",
-                "typography.less",
-                "utils.less"
-            ]
+
+    "parts": {
+        "common-css": ["Common CSS", "common/less"],
+        "common-js": ["Common JS", "common/js"],
+        "i18n": ["i18n", "i18n"],
+        "components": ["Components", "components"],
+        "icons": ["Metro icons", "icons"],
+        "colors": ["Additional colors", "colors"]
+    },
+
+    "common-css": {
+        "accent_colors": {
+            "name": "Accent colors",
+            "less": ["accent-colors"]
+        },
+        "border": {
+            "name": "Border",
+            "less": ["border"]
+        },
+        "cursors": {
+            "name": "Cursors",
+            "less": ["cursors"]
+        },
+        "default_icons": {
+            "name": "Default icons",
+            "less": ["default-icons"]
+        },
+        "display": {
+            "name": "Display",
+            "less": ["display"]
+        },
+        "embed": {
+            "name": "Embed objects",
+            "less": ["embed"]
+        },
+        "flex": {
+            "name": "Flex system",
+            "less": ["flex"]
+        },
+        "float": {
+            "name": "Float",
+            "less": ["float"]
+        },
+        "font": {
+            "name": "Font name",
+            "less": ["font"]
+        },
+        "images": {
+            "name": "Images",
+            "less": ["images"]
+        },
+        "inputs": {
+            "name": "Inputs",
+            "less": ["inputs"]
+        },
+        "lists": {
+            "name": "Lists",
+            "less": ["lists"]
+        },
+        "overlay": {
+            "name": "Overlay",
+            "less": ["overlay"]
+        },
+        "position": {
+            "name": "Position",
+            "less": ["position"]
+        },
+        "shadow": {
+            "name": "Shadows",
+            "less": ["shadow"]
+        },
+        "sizing": {
+            "name": "Sizing",
+            "less": ["sizing"]
+        },
+        "spacing": {
+            "name": "Spacing",
+            "less": ["spacing"]
+        },
+        "typography": {
+            "name": "Typography",
+            "less": ["typography"]
+        },
+        "utils": {
+            "name": "Utilities",
+            "less": ["utils"]
+        },
+        "debug": {
+            "name": "Debug class",
+            "less": ["debug"]
+        },
+        "ie": {
+            "name": "IE fixes",
+            "less": ["ie"]
+        },
+        "print": {
+            "name": "Print",
+            "less": ["print"]
         }
-    ],
-    "common-js": [
-        {
-            "name": "Common JS",
-            "path": "common/js",
-            "content": [
-                "animation.js",
-                "colors.js",
-                "export.js",
-                "i18n.js",
-                "md5.js",
-                "tpl.js",
-                "array-ext.js",
-                "date-ext.js",
-                "number-ext.js",
-                "string-ext.js"
-            ]
+    },
+
+    "i18n": {
+        "cn-ZH": {
+            "name": "cn-ZH",
+            "js": ["cn-ZH"]
+        },
+        "de-DE": {
+            "name": "de-DE",
+            "js": ["de-DE"]
+        },
+        "es-MX": {
+            "name": "es-MX",
+            "js": ["es-MX"]
+        },
+        "fr-FR": {
+            "name": "fr-FR",
+            "js": ["fr-FR"]
+        },
+        "hu-HU": {
+            "name": "hu-HU",
+            "js": ["hu-HU"]
+        },
+        "it-IT": {
+            "name": "it-IT",
+            "js": ["it-IT"]
+        },
+        "ru-RU": {
+            "name": "ru-RU",
+            "js": ["ru-RU"]
+        },
+        "tw-ZH": {
+            "name": "tw-ZH",
+            "js": ["tw-ZH"]
+        },
+        "uk-UA": {
+            "name": "uk-UA",
+            "js": ["uk-UA"]
         }
-    ],
-    "animations": [
-        {
-            "name": "Animations CSS",
-            "path": "animation/components",
-            "content": [
-                "element-animation.less",
-                "flip-card.less",
-                "post-card.less"
-            ]
+    },
+
+    "common-js": {
+        "animation":{
+            "name": "Animation",
+            "js": ["animation"]
+        },
+        "colors":{
+            "name": "Color module",
+            "js": ["colors"]
+        },
+        "md5":{
+            "name": "MD5",
+            "js": ["md5"]
+        },
+        "tpl":{
+            "name": "Micro Templating",
+            "js": ["tpl"]
+        },
+        "export":{
+            "name": "Data export",
+            "js": ["export"]
         }
-    ],
-    "special": [
-        {
-            "name": "Special CSS",
-            "path": "common/less",
-            "content": [
-                "ie.less",
-                "debug.less",
-                "print.less"
-            ]
-        }
-    ],
+    },
+
     "components": {
         "accordion": {
             "name": "Accordion",
-            "path": "components/accordion",
-            "content": {
-                "less": ["accordion.less", "accordion-rtl.less"],
-                "js": ["accordion.js"]
-            }
+            "js": ["accordion"],
+            "less": ["accordion", "accordion-rtl"]
         },
         "action-button": {
-            "name": "Action Button",
-            "path": "components/action-button",
-            "content": {
-                "less": ["action-button.less"]
-            }
+            "name": "Action button",
+            "less": ["action-button"]
         },
         "activity": {
-            "name": "Activity",
-            "path": "components/activity",
-            "content": {
-                "less": ["activity.less"],
-                "js": ["activity.js"]
-            },
+            "name": "Activities",
+            "js": ["activity"],
+            "less": ["activity"],
             "dependencies": {
                 "components": ["dialog"]
             }
         },
+        "adblock": {
+            "name": "Adblock hunter",
+            "js": ["adblock"]
+        },
         "app-bar": {
-            "name": "AppBar",
-            "path": "components/app-bar",
-            "content": {
-                "less": ["app-bar.less"],
-                "js": ["app-bar.js"]
-            },
+            "name": "App Bar",
+            "js": ["app-bar"],
+            "less": ["app-bar"],
             "dependencies": {
                 "components": ["hamburger"]
             }
         },
+        "audio-button": {
+            "name": "Audio button",
+            "js": ["audio-button"]
+        },
         "audio-player": {
             "name": "Audio player",
-            "path": "components/audio-player",
-            "content": {
-                "js": ["audio.js"]
-            },
+            "js": ["audio-player"],
             "dependencies": {
-                "components": ["media-player", "button", "slider"]
+                "components": ["slider", "media-player"]
             }
         },
         "badges": {
             "name": "Badges",
-            "path": "components/badges",
-            "content": {
-                "less": ["badges.less"]
-            }
+            "less": ["badges"]
         },
         "bottom-nav": {
-            "name": "BottomNav",
-            "path": "components/bottom-nav",
-            "content": {
-                "less": ["bottom-nav.less"]
-            }
+            "name": "Bottom nav",
+            "less": ["bottom-nav"]
         },
         "bottom-sheet": {
-            "name": "BottomSheet",
-            "path": "components/bottom-sheet",
-            "content": {
-                "less": ["bottom-sheet.less"],
-                "js": ["bottom-sheet.js"]
-            }
+            "name": "Bottom sheet",
+            "js": ["bottom-sheet"],
+            "less": ["bottom-sheet"]
         },
         "breadcrumbs": {
             "name": "Breadcrumbs",
-            "path": "components/breadcrumbs",
-            "content": {
-                "less": ["breadcrumbs.less"]
-            }
+            "less": ["breadcrumbs"]
         },
         "button": {
             "name": "Button",
-            "path": "components/button",
-            "content": {
-                "less": ["button.less"]
-            }
+            "less": ["button"]
         },
         "button-group": {
-            "name": "Button Group",
-            "path": "components/button-group",
-            "content": {
-                "less": ["button-group.less"],
-                "js": ["button-group.js"]
-            }
+            "name": "Button-group",
+            "js": ["button-group"],
+            "less": ["button-group"]
         },
         "calendar": {
             "name": "Calendar",
-            "path": "components/calendar",
-            "content": {
-                "less": ["calendar.less"],
-                "js": ["calendar.js"]
-            },
+            "js": ["calendar"],
+            "less": ["calendar"],
             "dependencies": {
-                "common-js": ["i18n", "date-ext", "string-ext"]
+                "components": ["button"]
             }
         },
-        "calendarpicker": {
+        "calendar-picker": {
             "name": "Calendar picker",
-            "path": "components/calendarpicker",
-            "content": {
-                "less": ["calendarpicker.less"],
-                "js": ["calendarpicker.js"]
-            },
+            "js": ["calendarpicker"],
+            "less": ["calendarpicker"],
             "dependencies": {
                 "components": ["calendar"]
             }
         },
         "cards": {
             "name": "Cards",
-            "path": "components/cards",
-            "content": {
-                "less": ["cards.less"]
-            }
+            "less": ["cards"]
         },
         "carousel": {
             "name": "Carousel",
-            "path": "components/carousel",
-            "content": {
-                "less": ["carousel.less"],
-                "js": ["carousel.js"]
+            "js": ["carousel"],
+            "less": ["carousel"],
+            "dependencies": {
+                "common-js": ["animation"],
+                "components": ["button"]
             }
         },
         "charms": {
             "name": "Charms",
-            "path": "components/charms",
-            "content": {
-                "less": ["charms.less"],
-                "js": ["charms.js"]
-            }
+            "js": ["charms"],
+            "less": ["charms"]
         },
         "chat": {
             "name": "Chat",
-            "path": "components/chat",
-            "content": {
-                "less": ["chat.less"],
-                "js": ["chat.js"]
+            "js": ["chat"],
+            "less": ["chat"],
+            "dependencies": {
+                "components": ["input", "button"]
             }
         },
         "checkbox": {
             "name": "Checkbox",
-            "path": "components/checkbox",
-            "content": {
-                "less": ["checkbox.less"],
-                "js": ["checkbox.js"]
-            }
+            "js": ["checkbox"],
+            "less": ["checkbox"]
         },
         "chips": {
             "name": "Chips",
-            "path": "components/chips",
-            "content": {
-                "less": ["chips.less"]
-            }
+            "less": ["chat"]
         },
         "clock": {
             "name": "Clock",
-            "path": "components/clock",
-            "content": {
-                "js": ["clock.js"]
-            }
+            "js": ["clock"]
         },
         "collapse": {
             "name": "Collapse",
-            "path": "components/collapse",
-            "content": {
-                "js": ["collapse.js"]
-            }
+            "js": ["collapse"]
         },
         "command-button": {
             "name": "Command button",
-            "path": "components/command-button",
-            "content": {
-                "less": ["command-button.less"]
-            }
+            "less": ["chat"]
         },
         "container": {
             "name": "Container",
-            "path": "components/container",
-            "content": {
-                "less": ["container.less"]
-            }
+            "less": ["container"]
         },
         "countdown": {
             "name": "Countdown",
-            "path": "components/countdown",
-            "content": {
-                "less": ["countdown.less"],
-                "js": ["countdown.js"]
-            }
+            "js": ["countdown"],
+            "less": ["countdown"]
         },
         "counter": {
             "name": "Counter",
-            "path": "components/counter",
-            "content": {
-                "js": ["counter.js"]
-            }
+            "js": ["counter"]
         },
         "cube": {
             "name": "Cube",
-            "path": "components/cube",
-            "content": {
-                "less": ["cube.less"],
-                "js": ["cube.js"]
-            }
+            "js": ["cube"],
+            "less": ["cube"]
         },
         "d-menu": {
-            "name": "Drop menu",
-            "path": "components/d-menu",
-            "content": {
-                "less": ["d-menu.less"]
-            }
+            "name": "D-menu",
+            "less": ["d-menu"]
+        },
+        "datatables": {
+            "name": "Datatables",
+            "less": ["datatables"]
         },
         "datepicker": {
             "name": "Date picker",
-            "path": "components/datepicker",
-            "content": {
-                "less": ["datepicker.less"],
-                "js": ["datepicker.js"]
-            },
+            "js": ["datepicker"],
+            "less": ["datepicker"],
             "dependencies": {
-                "common-js": ["i18n", "date-ext", "string-ext"],
                 "components": ["wheelpicker"]
             }
         },
         "dialog": {
             "name": "Dialog",
-            "path": "components/dialog",
-            "content": {
-                "less": ["dialog.less"],
-                "js": ["dialog.js"]
+            "js": ["dialog"],
+            "less": ["dialog"],
+            "dependencies": {
+                "components": ["button"]
             }
         },
         "donut": {
             "name": "Donut",
-            "path": "components/donut",
-            "content": {
-                "less": ["donut.less"],
-                "js": ["donut.js"]
+            "js": ["donut"],
+            "less": ["donut"]
+        },
+        "double-slider": {
+            "name": "Double slider",
+            "js": ["double-slider"],
+            "dependencies": {
+                "components": ["slider"]
             }
         },
         "drag-items": {
             "name": "Drag items",
-            "path": "components/drag-items",
-            "content": {
-                "less": ["drag-items.less"],
-                "js": ["drag-items.js"]
-            }
+            "js": ["drag-items"],
+            "less": ["drag-items"]
         },
         "draggable": {
             "name": "Draggable",
-            "path": "components/draggable",
-            "content": {
-                "less": ["draggable.less"],
-                "js": ["draggable.js"]
-            }
+            "js": ["draggable"],
+            "less": ["draggable"]
         },
         "dropdown": {
             "name": "Dropdown",
-            "path": "components/dropdown",
-            "content": {
-                "less": ["dropdown.less"],
-                "js": ["dropdown.js"]
-            }
+            "js": ["dropdown"],
+            "less": ["dropdown"]
         },
         "dropdown-button": {
             "name": "Dropdown button",
-            "path": "components/dropdown-button",
-            "content": {
-                "less": ["dropdown-button.less"]
+            "less": ["dropdown-button"],
+            "dependencies": {
+                "components": ["button", "dropdown"]
             }
         },
         "expand-button": {
             "name": "Expand button",
-            "path": "components/expand-button",
-            "content": {
-                "less": ["expand-button.less"]
-            }
+            "less": ["expand-button"]
         },
         "file": {
             "name": "File input",
-            "path": "components/file",
-            "content": {
-                "less": ["file.less"],
-                "js": ["file.js"]
-            },
+            "js": ["file"],
+            "less": ["file"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "common-css": ["inputs"],
+                "components": ["button"]
             }
         },
         "form": {
             "name": "Form",
-            "path": "components/form",
-            "content": {
-                "less": ["form.less", "forms-rtl.less"]
-            }
+            "less": ["form", "form-rtl"]
         },
         "gravatar": {
             "name": "Gravatar",
-            "path": "components/gravatar",
-            "content": {
-                "js": ["gravatar.js"]
-            },
+            "js": ["gravatar"],
             "dependencies": {
                 "common-js": ["md5"]
             }
         },
         "grid": {
-            "name": "Grid",
-            "path": "components/grid",
-            "content": {
-                "less": ["grid.less"]
-            }
+            "name": "Grid system",
+            "less": ["grid"]
         },
         "h-menu": {
-            "name": "Horiz menu",
-            "path": "components/h-menu",
-            "content": {
-                "less": ["h-menu.less"]
-            }
+            "name": "H-menu",
+            "less": ["h-menu"]
         },
         "hamburger": {
             "name": "Hamburger",
-            "path": "components/hamburger",
-            "content": {
-                "less": ["hamburger.less"]
-            }
+            "less": ["hamburger"]
         },
         "head-bar": {
             "name": "Head bar",
-            "path": "components/head-bar",
-            "content": {
-                "less": ["head-bar.less"]
-            }
+            "less": ["head-bar"]
         },
         "hero": {
             "name": "Hero",
-            "path": "components/hero",
-            "content": {
-                "less": ["hero.less"]
-            }
+            "less": ["hero"]
         },
         "hint": {
             "name": "Hint",
-            "path": "components/hint",
-            "content": {
-                "less": ["hint.less"],
-                "js": ["hint.js"]
-            }
+            "js": ["hint"],
+            "less": ["hint"]
         },
         "hotkey": {
             "name": "Hotkey",
-            "path": "components/hotkey",
-            "content": {
-                "js": ["hotkey.js"]
-            }
+            "js": ["hotkey"]
         },
         "html-container": {
             "name": "HTML container",
-            "path": "components/html-container",
-            "content": {
-                "js": ["html-container.js"]
-            }
+            "js": ["html-container"]
         },
         "icon-box": {
-            "name": "IconBox",
-            "path": "components/icon-box",
-            "content": {
-                "less": ["icon-box.less"]
-            }
+            "name": "Icon box",
+            "less": ["icon-box"]
         },
         "image-button": {
             "name": "Image button",
-            "path": "components/image-button",
-            "content": {
-                "less": ["image-button.less"]
-            }
+            "less": ["image-button"]
         },
-        "image-comparer": {
-            "name": "Image comparer",
-            "path": "components/image-comparer",
-            "content": {
-                "less": ["image-comparer.less"],
-                "js": ["image-comparer.js"]
-            }
+        "image-compare": {
+            "name": "Image compare",
+            "js": ["image-compare"],
+            "less": ["image-compare"]
         },
         "image-magnifier": {
             "name": "Image magnifier",
-            "path": "components/image-magnifier",
-            "content": {
-                "less": ["image-magnifier.less"],
-                "js": ["image-magnifier.js"]
-            }
+            "js": ["image-magnifier"],
+            "less": ["image-magnifier"]
         },
         "info-box": {
-            "name": "InfoBox",
-            "path": "components/info-box",
-            "content": {
-                "less": ["info-box.less"],
-                "js": ["info-box.js"]
-            }
+            "name": "Info box",
+            "js": ["info-box"],
+            "less": ["info-box"]
         },
         "info-button": {
             "name": "Info button",
-            "path": "components/info-button",
-            "content": {
-                "less": ["info-button.less"]
-            }
+            "less": ["info-button"]
         },
         "info-panel": {
             "name": "Info panel",
-            "path": "components/info-panel",
-            "content": {
-                "less": ["info-panel.less"]
-            }
+            "less": ["info-panel"]
         },
         "input": {
             "name": "Input",
-            "path": "components/input",
-            "content": {
-                "less": ["input.less"],
-                "js": ["input.js"]
-            },
+            "js": ["input"],
+            "less": ["input"],
             "dependencies": {
                 "common-css": ["inputs"],
                 "components": ["button"]
@@ -504,463 +471,363 @@
         },
         "input-material": {
             "name": "Input material",
-            "path": "components/input-material",
-            "content": {
-                "less": ["input-material.less"],
-                "js": ["input-material.js"]
-            },
+            "js": ["input-material"],
+            "less": ["input-material"],
             "dependencies": {
                 "common-css": ["inputs"]
             }
         },
         "keypad": {
             "name": "Keypad",
-            "path": "components/keypad",
-            "content": {
-                "less": ["keypad.less"],
-                "js": ["keypad.js"]
-            },
+            "js": ["keypad"],
+            "less": ["keypad"],
             "dependencies": {
                 "common-css": ["inputs"]
             }
         },
         "list": {
             "name": "List",
-            "path": "components/list",
-            "content": {
-                "js": ["list.js"]
-            },
-            "dependencies": {
-                "components": ["pagination"]
-            }
+            "js": ["list"]
         },
         "listview": {
             "name": "ListView",
-            "path": "components/listview",
-            "content": {
-                "less": ["listview.less"],
-                "js": ["listview.js"]
+            "js": ["listview"],
+            "less": ["listview"],
+            "dependencies": {
+                "components": ["checkbox"]
             }
         },
         "master": {
             "name": "Master",
-            "path": "components/master",
-            "content": {
-                "less": ["master.less"],
-                "js": ["master.js"]
-            }
+            "js": ["master"],
+            "less": ["master"]
         },
         "media-player": {
             "name": "Media player",
-            "path": "components/media-player",
-            "content": {
-                "less": ["media-player.less"]
-            }
+            "less": ["media-player"]
         },
         "more-info-box": {
-            "name": "More InfoBox",
-            "path": "components/more-info-box",
-            "content": {
-                "less": ["more-info-box.less"]
-            }
+            "name": "More info box",
+            "less": ["more-info-boc"]
         },
         "navview": {
-            "name": "Navigation View",
-            "path": "components/navview",
-            "content": {
-                "less": ["navview.less"],
-                "js": ["navview.js"]
+            "name": "Navigation view",
+            "js": ["navview"],
+            "less": ["navview"],
+            "dependencies": {
+                "components": ["input", "button", "hamburger"]
             }
         },
         "notify": {
             "name": "Notify",
-            "path": "components/notify",
-            "content": {
-                "less": ["notify.less"],
-                "js": ["notify.js"]
-            }
+            "js": ["notify"],
+            "less": ["notify"]
         },
         "pagination": {
             "name": "Pagination",
-            "path": "components/pagination",
-            "content": {
-                "less": ["pagination.less"],
-                "js": ["pagination.js"]
-            }
+            "js": ["pagination"],
+            "less": ["pagination"]
         },
         "panel": {
             "name": "Panel",
-            "path": "components/panel",
-            "content": {
-                "less": ["panel.less"],
-                "js": ["panel.js"]
+            "js": ["panel"],
+            "less": ["panel"],
+            "dependencies": {
+                "components": ["button", "draggable", "collapse"]
             }
         },
         "popover": {
             "name": "Popover",
-            "path": "components/popover",
-            "content": {
-                "less": ["popover.less"],
-                "js": ["popover.js"]
-            },
-            "dependencies": {
-                "common-css": ["utils"]
-            }
+            "js": ["popover"],
+            "less": ["popover"]
         },
         "progress": {
-            "name": "Progress bar",
-            "path": "components/progress",
-            "content": {
-                "less": ["progress.less"],
-                "js": ["progress.js"]
-            }
+            "name": "Progress",
+            "js": ["progress"],
+            "less": ["progress"]
         },
         "radio": {
-            "name": "Radio",
-            "path": "components/radio",
-            "content": {
-                "less": ["radio.less"],
-                "js": ["radio.js"]
-            }
-        },
-        "rating": {
-            "name": "Rating",
-            "path": "components/rating",
-            "content": {
-                "less": ["rating.less"],
-                "js": ["rating.js"]
-            },
+            "name": "Radio button",
+            "js": ["radio"],
+            "less": ["radio"],
             "dependencies": {
                 "common-css": ["inputs"]
             }
         },
-        "resizable": {
+        "rating": {
+            "name": "Rating",
+            "js": ["rating"],
+            "less": ["rating"]
+        },
+        "resizeable": {
             "name": "Resizeable",
-            "path": "components/resizeable",
-            "content": {
-                "less": ["resizeable.less"],
-                "js": ["resizeable.js"]
-            }
+            "js": ["resizeable"],
+            "less": ["resizeable"]
         },
         "resizer": {
             "name": "Resizer",
-            "path": "components/resizer",
-            "content": {
-                "js": ["resizer.js"]
-            }
+            "js": ["resizer"]
         },
         "ribbon-menu": {
             "name": "Ribbon menu",
-            "path": "components/ribbon-menu",
-            "content": {
-                "less": ["ribbon-menu.less"],
-                "js": ["ribbon-menu.js"]
-            }
+            "js": ["ribbon-menu"],
+            "less": ["ribbon-menu"]
         },
         "ripple": {
             "name": "Ripple",
-            "path": "components/ripple",
-            "content": {
-                "less": ["ripple.less"],
-                "js": ["ripple.js"]
-            }
+            "js": ["ripple"],
+            "less": ["ripple"]
         },
         "select": {
             "name": "Select",
-            "path": "components/select",
-            "content": {
-                "less": ["select.less"],
-                "js": ["select.js"]
-            },
+            "js": ["select"],
+            "less": ["select"],
             "dependencies": {
                 "common-css": ["inputs"],
-                "components": ["button"]
+                "components": ["input", "checkbox", "dropdown"]
             }
+        },
+        "select2": {
+            "name": "Select2",
+            "js": ["select2"],
+            "less": ["select2"]
         },
         "shortcut": {
             "name": "Shortcut",
-            "path": "components/shortcut",
-            "content": {
-                "less": ["shortcut.less"]
-            }
+            "less": ["shortcut"]
         },
         "sidebar": {
             "name": "Sidebar",
-            "path": "components/sidebar",
-            "content": {
-                "less": ["sidebar.less"],
-                "js": ["sidebar.js"]
+            "js": ["sidebar"],
+            "less": ["sidebar"],
+            "dependencies": {
+                "components": ["input", "hamburger"]
             }
         },
         "sidenav-counter": {
             "name": "Sidenav counter",
-            "path": "components/sidenav-counter",
-            "content": {
-                "less": ["sidenav-counter.less"]
-            }
+            "less": ["sidenav-counter"]
         },
         "sidenav-m3": {
-            "name": "Sidenav m3",
-            "path": "components/sidenav-m3",
-            "content": {
-                "less": ["sidenav-m3.less"]
-            }
+            "name": "Sidenav M3",
+            "less": ["sidenav-m3"]
         },
         "sidenav-simple": {
             "name": "Sidenav simple",
-            "path": "components/sidenav-simple",
-            "content": {
-                "less": ["sidenav-simple.less"]
-            }
+            "less": ["sidenav-simple"]
         },
         "skill-box": {
-            "name": "SkillBox",
-            "path": "components/skill-box",
-            "content": {
-                "less": ["skill-box.less"]
-            }
+            "name": "Skill Box",
+            "less": ["skill-box"]
         },
         "slider": {
-            "name": "Slider and Double slider",
-            "path": "components/slider",
-            "content": {
-                "less": ["slider.less"],
-                "js": ["slider.js", "double-slider.js"]
-            }
-        },
-        "slider-double": {
-            "name": "Slider and Double slider",
-            "path": "components/slider",
-            "content": {
-                "js": ["double-slider.js"]
-            },
-            "dependencies": {
-                "components": ["slider"]
-            }
+            "name": "Slider",
+            "js": ["slider"],
+            "less": ["slider"]
         },
         "social-box": {
-            "name": "SocialBox",
-            "path": "components/social-box",
-            "content": {
-                "less": ["social-box.less"]
-            }
+            "name": "Social Box",
+            "less": ["social-box"]
         },
         "sorter": {
             "name": "Sorter",
-            "path": "components/sorter",
-            "content": {
-                "js": ["sorter.js"]
-            }
+            "js": ["sorter"]
         },
         "spinner": {
             "name": "Spinner",
-            "path": "components/spinner",
-            "content": {
-                "less": ["spinner.less"],
-                "js": ["spinner.js"]
-            },
+            "js": ["spinner"],
+            "less": ["spinner"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["button"]
+                "components": ["button"],
+                "common-css": ["inputs"]
             }
         },
         "split-button": {
             "name": "Split button",
-            "path": "components/split-button",
-            "content": {
-                "less": ["split-button.less"]
-            }
+            "less": ["split-button"]
         },
         "splitter": {
             "name": "Splitter",
-            "path": "components/splitter",
-            "content": {
-                "less": ["splitter.less"],
-                "js": ["splitter.js"]
-            }
+            "js": ["splitter"],
+            "less": ["splitter"]
         },
         "stepper": {
             "name": "Stepper",
-            "path": "components/stepper",
-            "content": {
-                "less": ["stepper.less"],
-                "js": ["stepper.js"]
-            }
+            "js": ["stepper"],
+            "less": ["stepper"]
         },
         "storage": {
             "name": "Storage",
-            "path": "components/storage",
-            "content": {
-                "js": ["storage.js"]
-            }
+            "js": ["storage"]
         },
         "streamer": {
             "name": "Streamer",
-            "path": "components/streamer",
-            "content": {
-                "less": ["streamer.less"],
-                "js": ["streamer.js"]
-            }
+            "js": ["streamer"],
+            "less": ["streamer"]
         },
         "switch": {
             "name": "Switch",
-            "path": "components/switch",
-            "content": {
-                "less": ["switch.less"],
-                "js": ["switch.js"]
+            "js": ["switch"],
+            "less": ["switch"],
+            "dependencies": {
+                "common-css": ["inputs"]
             }
         },
         "t-menu": {
             "name": "T-menu",
-            "path": "components/t-menu",
-            "content": {
-                "less": ["t-menu.less"]
-            }
+            "less": ["t-menu"]
         },
         "table": {
             "name": "Table",
-            "path": "components/table",
-            "content": {
-                "less": ["table.less"],
-                "js": ["table.js"]
-            },
+            "js": ["table"],
+            "less": ["table"],
             "dependencies": {
-                "common-js": ["export"],
-                "components": ["pagination", "select", "input", "checkbox", "radio"]
+                "components": ["activity", "checkbox", "radio", "select", "button"],
+                "common-js": ["export"]
             }
         },
         "tabs": {
             "name": "Tabs",
-            "path": "components/tabs",
-            "content": {
-                "less": ["tabs.less"],
-                "js": ["tabs.js"]
+            "js": ["tabs"],
+            "less": ["tabs"],
+            "dependencies": {
+                "components": ["hamburger"]
             }
         },
         "tabs-material": {
             "name": "Tabs material",
-            "path": "components/tabs-material",
-            "content": {
-                "less": ["tabs-material.less"],
-                "js": ["tabs-material.js"]
-            }
+            "js": ["tabs-material"],
+            "less": ["tabs-material"]
         },
         "tag-input": {
-            "name": "Tag inout",
-            "path": "components/tag-input",
-            "content": {
-                "less": ["tag-input.less"],
-                "js": ["tag-input.js"]
-            },
+            "name": "Tag input",
+            "js": ["tag-input"],
+            "less": ["tag-input"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["button"]
+                "common-css": ["inputs"]
             }
         },
         "textarea": {
             "name": "Textarea",
-            "path": "components/textarea",
-            "content": {
-                "less": ["textarea.less"],
-                "js": ["textarea.js"]
-            },
+            "js": ["textarea"],
+            "less": ["textarea"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["button"]
+                "common-css": ["inputs"]
             }
         },
-        "tiles": {
-            "name": "Tiles",
-            "path": "components/tiles",
-            "content": {
-                "less": ["tiles.less", "tiles-effects.less"],
-                "js": ["tiles.js"]
+        "tile": {
+            "name": "Tile",
+            "js": ["tile"],
+            "less": ["tile"],
+            "dependencies": {
+                "common-js": ["animation"]
             }
         },
         "timepicker": {
             "name": "Time picker",
-            "path": "components/timepicker",
-            "content": {
-                "less": ["timepicker.less"],
-                "js": ["timepicker.js"]
+            "js": ["timepicker"],
+            "less": ["timepicker"],
+            "dependencies": {
+                "components": ["wheelpicker"]
             }
         },
         "toast": {
             "name": "Toast",
-            "path": "components/toast",
-            "content": {
-                "less": ["toast.less"],
-                "js": ["toast.js"]
-            }
+            "js": ["toast"],
+            "less": ["toast"]
         },
         "toolbar": {
             "name": "Toolbar",
-            "path": "components/toolbar",
-            "content": {
-                "less": ["toolbar.less"]
-            }
+            "js": ["toolbar"],
+            "less": ["toolbar"]
         },
         "top-bar": {
             "name": "Top bar",
-            "path": "components/top-bar",
-            "content": {
-                "less": ["top-bar.less"]
-            }
+            "less": ["top-bar"]
         },
         "touch": {
-            "name": "Touch and swipe",
-            "path": "components/touch",
-            "content": {
-                "js": ["touch.js"]
-            }
+            "name": "Touch",
+            "js": ["touch"]
         },
         "treeview": {
             "name": "TreeView",
-            "path": "components/treeview",
-            "content": {
-                "less": ["treeview.less"],
-                "js": ["treeview.js"]
-            }
+            "js": ["treeview"],
+            "less": ["treevieww"]
         },
         "validator": {
             "name": "Validator",
-            "path": "components/validator",
-            "content": {
-                "js": ["validator.js"]
-            }
+            "js": ["validator"]
+        },
+        "vegas": {
+            "name": "Vegas",
+            "js": ["vegas"],
+            "less": ["vegas"]
         },
         "video-player": {
             "name": "Video player",
-            "path": "components/video-player",
-            "content": {
-                "js": ["video.js"]
-            },
+            "js": ["video-player"],
             "dependencies": {
                 "components": ["media-player", "button", "slider"]
             }
         },
         "wheelpicker": {
             "name": "Wheel picker",
-            "path": "components/wheelpicker",
-            "content": {
-                "less": ["wheelpicker.less"]
-            }
+            "less": ["wheelpicker"]
         },
         "window": {
             "name": "Window",
-            "path": "components/window",
-            "content": {
-                "less": ["window.less"],
-                "js": ["window.js"]
+            "js": ["window"],
+            "less": ["window"],
+            "dependencies": {
+                "components": ["draggable", "resizeable", "button"]
             }
         },
         "wizard": {
             "name": "Wizard",
-            "path": "components/wizard",
-            "content": {
-                "less": ["wizard.less"],
-                "js": ["wizard.js"]
+            "js": ["wizard"],
+            "less": ["wizard"],
+            "dependencies": {
+                "components": ["button"],
+                "common-css": ["default-icons"]
             }
+        }
+    },
+
+    "colors": {
+        "background": {
+            "name": "Background",
+            "less": ["background"]
+        },
+        "color": {
+            "name": "Foreground",
+            "less": ["foreground"]
+        },
+        "outline": {
+            "name": "Outline",
+            "less": ["outline"]
+        },
+        "border": {
+            "name": "Border",
+            "less": ["border"]
+        },
+        "ribbed": {
+            "name": "Ribbed",
+            "less": ["ribbed"]
+        },
+        "pseudo": {
+            "name": "Pseudo",
+            "less": ["pseudo"]
+        },
+        "opacity": {
+            "name": "Opacity",
+            "less": ["opacity"]
+        }
+    },
+
+    "icons": {
+        "mif": {
+            "name": "Metro icons font",
+            "less": ["mif-base", "mif-icons"]
         }
     }
 }
