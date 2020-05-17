@@ -1,7 +1,7 @@
 {
     "setup": {
         "release": "4.3.7",
-        "next": "4.3.7"
+        "next": "4.3.8"
     },
 
     "parts": {
@@ -160,6 +160,10 @@
             "name": "de-DE",
             "js": ["de-DE"]
         },
+        "en-US": {
+            "name": "en-US",
+            "js": ["en-US"]
+        },
         "es-MX": {
             "name": "es-MX",
             "js": ["es-MX"]
@@ -240,7 +244,8 @@
             "js": ["app-bar"],
             "less": ["app-bar"],
             "dependencies": {
-                "components": ["hamburger"]
+                "components": ["hamburger"],
+                "common-js": ["colors"]
             }
         },
         "audio-button": {
@@ -346,6 +351,18 @@
         "container": {
             "name": "Container",
             "less": ["container"]
+        },
+        "cookie": {
+            "name": "Cookie manager",
+            "js": ["cookie"]
+        },
+        "cookie-disclaimer": {
+            "name": "Cookie disclaimer",
+            "js": ["cookie-disclaimer"],
+            "less": ["cookie-disclaimer"],
+            "dependencies": {
+                "components": ["cookie"]
+            }
         },
         "countdown": {
             "name": "Countdown",
@@ -604,7 +621,10 @@
         "rating": {
             "name": "Rating",
             "js": ["rating"],
-            "less": ["rating"]
+            "less": ["rating"],
+            "dependencies": {
+                "common-js": ["colors"]
+            }
         },
         "resizeable": {
             "name": "Resizeable",
@@ -631,7 +651,7 @@
             "less": ["select"],
             "dependencies": {
                 "common-css": ["inputs"],
-                "components": ["input", "checkbox", "dropdown"]
+                "components": ["input", "checkbox", "dropdown", "tag"]
             }
         },
         "select2": {
@@ -738,7 +758,8 @@
             "js": ["tabs"],
             "less": ["tabs"],
             "dependencies": {
-                "components": ["hamburger"]
+                "components": ["hamburger"],
+                "common-js": ["colors"]
             }
         },
         "tabs-material": {
@@ -746,12 +767,18 @@
             "js": ["tabs-material"],
             "less": ["tabs-material"]
         },
+        "tag": {
+            "name": "Tag",
+            "less": ["tag"]
+        },
         "tag-input": {
             "name": "Tag input",
             "js": ["tag-input"],
             "less": ["tag-input"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "common-css": ["inputs"],
+                "components": ["tag", "button"],
+                "common-js": ["colors"]
             }
         },
         "textarea": {
@@ -759,7 +786,8 @@
             "js": ["textarea"],
             "less": ["textarea"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "common-css": ["inputs"],
+                "components": ["button"]
             }
         },
         "tile": {
@@ -767,7 +795,7 @@
             "js": ["tile"],
             "less": ["tile"],
             "dependencies": {
-                "common-js": ["animation"]
+                "common-js": ["animation", "colors"]
             }
         },
         "timepicker": {
@@ -803,7 +831,10 @@
         },
         "validator": {
             "name": "Validator",
-            "js": ["validator"]
+            "js": ["validator"],
+            "dependencies": {
+                "common-js": ["colors"]
+            }
         },
         "vegas": {
             "name": "Vegas",

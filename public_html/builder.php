@@ -121,7 +121,7 @@ foreach ($build["include"] as $file) {
 
 foreach (['common-css', 'colors-css', 'animation-css', 'components'] as $val) {
     if (isset($build[$val]['less'])) foreach ($build[$val]['less'] as $file) {
-        $less_file_content .= clear_less(file_get_contents($file));
+        $less_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_less(file_get_contents($file));
     }
 }
 
@@ -129,12 +129,21 @@ foreach (['common-css', 'colors-css', 'animation-css', 'components'] as $val) {
 
 $js_file_content .= clear_js(file_get_contents($source_path . "/m4q/m4q.js"));
 $js_file_content .= clear_js(file_get_contents($source_path . "/metro.js"));
+$js_file_content .= clear_js(file_get_contents($source_path . "/common/js/utilities.js"));
 foreach (['array', 'date', 'number', 'object', 'string'] as $file) {
-    $js_file_content .= clear_js(file_get_contents($source_path . "/extensions/$file.js"));
+    $js_file_content .= "\n\n/* extensions/$file.js */\n\n".clear_js(file_get_contents($source_path . "extensions/$file.js"));
 }
-foreach (['common-js', 'i18n', 'components'] as $val) {
+
+$us = false;
+if (count($parts['components']) && count(array_intersect(['calendar', 'calendarpicker', 'countdown', 'datepicker', 'dialog', 'table', 'timepicker', 'validator'], $parts['components']))) {
+    $us = true;
+    $js_file_content .= clear_js(file_get_contents($source_path . "/i18n/en-US.js"));
+}
+
+foreach (['i18n', 'common-js', 'components'] as $val) {
     if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
-        $js_file_content .= clear_js(file_get_contents($file));
+        if ($us && basename($file) === 'en-US.js') continue;
+        $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
     }
 }
 $js_file_content .= "\n".$js_footer;
@@ -176,16 +185,16 @@ if (substr(php_uname(), 0, 7) == "Windows"){
 } else {
     $less_command = str_replace(['LESS_FILE', 'CSS_FILE'], [$less_file_name, $css_file_name], $less_command);
     exec($less_command, $output, $exit_status);
-    $was_successful = ($exit_status == 0) ? TRUE : FALSE;
+    $was_successful = $exit_status == 0;
 
     if ($minified) {
         $clean_command = str_replace(['CSS_FILE', 'CSS_MIN'], [$css_file_name, $css_file_name_min], $clean_command);
         exec($clean_command, $output, $exit_status);
-        $was_successful = ($exit_status == 0) ? TRUE : FALSE;
+        $was_successful = $exit_status == 0;
 
         $uglify_command = str_replace(['JS_FILE', 'JS_MIN'], [$js_file_name, $js_file_name_min], $uglify_command);
         exec($uglify_command, $output, $exit_status);
-        $was_successful = ($exit_status == 0) ? TRUE : FALSE;
+        $was_successful = $exit_status == 0;
     }
 }
 
