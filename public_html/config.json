@@ -1,6 +1,6 @@
 {
     "setup": {
-        "release": "4.3.7",
+        "release": "4.3.8",
         "next": "4.3.8"
     },
 
@@ -93,10 +93,6 @@
         "debug": {
             "name": "Debug class",
             "less": ["debug"]
-        },
-        "ie": {
-            "name": "IE fixes",
-            "less": ["ie"]
         },
         "print": {
             "name": "Print",
@@ -194,6 +190,10 @@
         "uk-UA": {
             "name": "uk-UA",
             "js": ["uk-UA"]
+        },
+        "pt-BR": {
+            "name": "pt-BR",
+            "js": ["pt-BR"]
         }
     },
 
@@ -210,10 +210,6 @@
             "name": "MD5",
             "js": ["md5"]
         },
-        "tpl":{
-            "name": "Micro Templating",
-            "js": ["tpl"]
-        },
         "export":{
             "name": "Data export",
             "js": ["export"]
@@ -224,7 +220,7 @@
         "accordion": {
             "name": "Accordion",
             "js": ["accordion"],
-            "less": ["accordion", "accordion-rtl"]
+            "less": ["accordion"]
         },
         "action-button": {
             "name": "Action button",
@@ -454,7 +450,7 @@
         },
         "form": {
             "name": "Form",
-            "less": ["form", "form-rtl"]
+            "less": ["form"]
         },
         "gravatar": {
             "name": "Gravatar",
@@ -784,6 +780,10 @@
                 "common-js": ["colors"]
             }
         },
+        "template":{
+            "name": "Micro Templating",
+            "js": ["template-engine"]
+        },
         "textarea": {
             "name": "Textarea",
             "js": ["textarea"],
@@ -798,7 +798,7 @@
             "js": ["tile"],
             "less": ["tile"],
             "dependencies": {
-                "common-js": ["animation", "colors"]
+                "common-js": ["animation"]
             }
         },
         "timepicker": {

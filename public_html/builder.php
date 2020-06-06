@@ -14,32 +14,9 @@ $copyright = <<<COPYRIGHT
  */
 COPYRIGHT;
 
-$js_header = <<< JS_HEADER
-(function( factory ) {
-    if ( typeof define === 'function' && define.amd ) {
-        define('metro4', factory );
-    } else {
-        factory( );
-    }
-}(function( ) { 
-'use strict';
-
-window.hideM4QVersion = true;
-JS_HEADER;
-
-$js_footer = <<< JS_FOOTER
-if (METRO_INIT ===  true) {
-	METRO_INIT_MODE === 'immediate' ? Metro.init() : $(function(){Metro.init()});
-}
-
-return Metro;
-
-}));
-JS_FOOTER;
-
 $local = false;
-$package_path = $local ? "source/" : "https://raw.githubusercontent.com/olton/Metro-UI-CSS/master/";
-$source_path = $local  ? "source/" : "https://raw.githubusercontent.com/olton/Metro-UI-CSS/master/source/";
+$package_path = "https://raw.githubusercontent.com/olton/Metro-UI-CSS/master/";
+$source_path = "https://raw.githubusercontent.com/olton/Metro-UI-CSS/master/source/";
 $config = json_decode(file_get_contents("config.json"), true);
 
 $minified = isset($_POST["minified"]);
@@ -89,7 +66,7 @@ $clean_command = $clean . " -o CSS_MIN CSS_FILE ".($source_map ? " --source-map 
 $copyright = str_replace(['%VER%', '%TIME%', '%YEAR%'], [$ver_number, date("d/m/Y H:i:s"), date("Y")], $copyright) . "\n";
 
 $less_file_content = $copyright;
-$js_file_content = $copyright . $js_header . "\n";
+$js_file_content = $copyright . "\n";
 
 // Add required css
 foreach (['vars', 'mixins', 'default-icons'] as $file) {
@@ -116,37 +93,66 @@ foreach ($parts as $key => $val) {
 // Create less file
 
 foreach ($build["include"] as $file) {
-    $less_file_content .= clear_less(file_get_contents($file));
+    if (file_exists($file))
+        $less_file_content .= clear_less(file_get_contents($file));
 }
 
 foreach (['common-css', 'colors-css', 'animation-css', 'components'] as $val) {
     if (isset($build[$val]['less'])) foreach ($build[$val]['less'] as $file) {
-        $less_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_less(file_get_contents($file));
+        if (file_exists($file))
+            $less_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_less(file_get_contents($file));
     }
 }
 
 // Create js file
 
+// Add REQUIRED files
 $js_file_content .= clear_js(file_get_contents($source_path . "/m4q/m4q.js"));
-$js_file_content .= clear_js(file_get_contents($source_path . "/metro.js"));
-$js_file_content .= clear_js(file_get_contents($source_path . "/common/js/utilities.js"));
-foreach (['array', 'date', 'number', 'object', 'string'] as $file) {
-    $js_file_content .= "\n\n/* extensions/$file.js */\n\n".clear_js(file_get_contents($source_path . "extensions/$file.js"));
-}
+$js_file_content .= clear_js(file_get_contents($source_path . "/source/core/global.js"));
+$js_file_content .= clear_js(file_get_contents($source_path . "/source/core/metro.js"));
 
+// Add default locale if specified components selected
 $us = false;
 if (count($parts['components']) && count(array_intersect(['calendar', 'calendarpicker', 'countdown', 'datepicker', 'dialog', 'table', 'timepicker', 'validator'], $parts['components']))) {
-    $us = true;
-    $js_file_content .= clear_js(file_get_contents($source_path . "/i18n/en-US.js"));
-}
-
-foreach (['i18n', 'common-js', 'components'] as $val) {
-    if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
-        if ($us && basename($file) === 'en-US.js') continue;
-        $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
+    if (file_exists($source_path . "/i18n/en-US.js")) {
+        $us = true;
+        $js_file_content .= clear_js(file_get_contents($source_path . "/i18n/en-US.js"));
     }
 }
-$js_file_content .= "\n".$js_footer;
+
+// Add others locales
+foreach (['i18n'] as $val) {
+    if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
+        if ($us && basename($file) === 'en-US.js') continue;
+        if (file_exists($file))
+            $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
+    }
+}
+
+// Add extensions, REQUIRED
+foreach (['array', 'date', 'number', 'object', 'string'] as $file) {
+    if (file_exists($source_path . "extensions/$file.js"))
+        $js_file_content .= "\n\n/* extensions/$file.js */\n\n".clear_js(file_get_contents($source_path . "extensions/$file.js"));
+}
+
+// Add common js, utilities REQUIRED
+$js_file_content .= clear_js(file_get_contents($source_path . "/common/js/utilities.js"));
+foreach (['common-js'] as $val) {
+    if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
+        if (file_exists($file))
+            $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
+    }
+}
+
+// Add components
+foreach (['components'] as $val) {
+    if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
+        if (file_exists($file))
+            $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
+    }
+}
+
+$js_file_content .= "\n";
 
 $less_file_name = "temp/" . $hash . ".less";
 $css_file_name = "temp/" . $hash . ".css";
