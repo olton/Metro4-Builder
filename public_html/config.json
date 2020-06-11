@@ -198,9 +198,9 @@
     },
 
     "common-js": {
-        "animation":{
-            "name": "Animation",
-            "js": ["animation"]
+        "animations":{
+            "name": "Animations",
+            "js": ["animations"]
         },
         "colors":{
             "name": "Color module",
@@ -309,7 +309,7 @@
             "js": ["carousel"],
             "less": ["carousel"],
             "dependencies": {
-                "common-js": ["animation"],
+                "common-js": ["animations"],
                 "components": ["button"]
             }
         },
@@ -780,9 +780,16 @@
                 "common-js": ["colors"]
             }
         },
-        "template":{
+        "tpl":{
             "name": "Micro Templating",
             "js": ["template-engine"]
+        },
+        "template":{
+            "name": "Template",
+            "js": ["template"],
+            "dependencies": {
+                "components": ["tpl"]
+            }
         },
         "textarea": {
             "name": "Textarea",
@@ -798,7 +805,7 @@
             "js": ["tile"],
             "less": ["tile"],
             "dependencies": {
-                "common-js": ["animation"]
+                "common-js": ["animations"]
             }
         },
         "timepicker": {

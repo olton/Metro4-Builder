@@ -73,6 +73,7 @@ foreach (['vars', 'mixins', 'default-icons'] as $file) {
     $build['include'][$file] = $source_path . "include/$file.less";
 }
 
+
 foreach ($parts as $key => $val) {
     foreach ($val as $comp) {
         addComponent($key, $comp, 'less');
@@ -92,14 +93,16 @@ foreach ($parts as $key => $val) {
 
 // Create less file
 
+$build['include'][$file] = $source_path . "common/less/reset.less";
+
 foreach ($build["include"] as $file) {
-    if (file_exists($file))
+    if (does_url_exists($file))
         $less_file_content .= clear_less(file_get_contents($file));
 }
 
 foreach (['common-css', 'colors-css', 'animation-css', 'components'] as $val) {
     if (isset($build[$val]['less'])) foreach ($build[$val]['less'] as $file) {
-        if (file_exists($file))
+        if (does_url_exists($file))
             $less_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_less(file_get_contents($file));
     }
 }
@@ -108,13 +111,13 @@ foreach (['common-css', 'colors-css', 'animation-css', 'components'] as $val) {
 
 // Add REQUIRED files
 $js_file_content .= clear_js(file_get_contents($source_path . "/m4q/m4q.js"));
-$js_file_content .= clear_js(file_get_contents($source_path . "/source/core/global.js"));
-$js_file_content .= clear_js(file_get_contents($source_path . "/source/core/metro.js"));
+$js_file_content .= clear_js(file_get_contents($source_path . "/core/global.js"));
+$js_file_content .= clear_js(file_get_contents($source_path . "/core/metro.js"));
 
 // Add default locale if specified components selected
 $us = false;
 if (count($parts['components']) && count(array_intersect(['calendar', 'calendarpicker', 'countdown', 'datepicker', 'dialog', 'table', 'timepicker', 'validator'], $parts['components']))) {
-    if (file_exists($source_path . "/i18n/en-US.js")) {
+    if (does_url_exists($source_path . "/i18n/en-US.js")) {
         $us = true;
         $js_file_content .= clear_js(file_get_contents($source_path . "/i18n/en-US.js"));
     }
@@ -124,14 +127,14 @@ if (count($parts['components']) && count(array_intersect(['calendar', 'calendarp
 foreach (['i18n'] as $val) {
     if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
         if ($us && basename($file) === 'en-US.js') continue;
-        if (file_exists($file))
+        if (does_url_exists($file))
             $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
     }
 }
 
 // Add extensions, REQUIRED
 foreach (['array', 'date', 'number', 'object', 'string'] as $file) {
-    if (file_exists($source_path . "extensions/$file.js"))
+    if (does_url_exists($source_path . "extensions/$file.js"))
         $js_file_content .= "\n\n/* extensions/$file.js */\n\n".clear_js(file_get_contents($source_path . "extensions/$file.js"));
 }
 
@@ -139,7 +142,7 @@ foreach (['array', 'date', 'number', 'object', 'string'] as $file) {
 $js_file_content .= clear_js(file_get_contents($source_path . "/common/js/utilities.js"));
 foreach (['common-js'] as $val) {
     if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
-        if (file_exists($file))
+        if (does_url_exists($file))
             $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
     }
 }
@@ -147,7 +150,7 @@ foreach (['common-js'] as $val) {
 // Add components
 foreach (['components'] as $val) {
     if (isset($build[$val]['js'])) foreach ($build[$val]['js'] as $file) {
-        if (file_exists($file))
+        if (does_url_exists($file))
             $js_file_content .= "\n\n/* $val/".basename($file)." */\n\n".clear_js(file_get_contents($file));
     }
 }
