@@ -93,7 +93,7 @@ foreach ($parts as $key => $val) {
 
 // Create less file
 
-$build['include'][$file] = $source_path . "common/less/reset.less";
+$build['include']["reset"] = $source_path . "common/less/reset.less";
 
 foreach ($build["include"] as $file) {
     if (does_url_exists($file))
@@ -157,17 +157,20 @@ foreach (['components'] as $val) {
 
 $js_file_content .= "\n";
 
-$less_file_name = "temp/" . $hash . ".less";
-$css_file_name = "temp/" . $hash . ".css";
-$css_file_name_min = "temp/" . $hash . ".min.css";
-$css_file_name_min_map = "temp/" . $hash . ".min.css.map";
+$temp_folder = "temp/$hash/";
+mkdir($temp_folder);
+
+$less_file_name = $temp_folder . $hash . ".less";
+$css_file_name = $temp_folder . $hash . ".css";
+$css_file_name_min = $temp_folder . $hash . ".min.css";
+$css_file_name_min_map = $temp_folder . $hash . ".min.css.map";
 $less_file = fopen($less_file_name, "w");
 fwrite($less_file, $less_file_content);
 fclose($less_file);
 
-$js_file_name = "temp/" . $hash . ".js";
-$js_file_name_min = "temp/" . $hash . ".min.js";
-$js_file_name_min_map = "temp/" . $hash . ".min.js.map";
+$js_file_name = $temp_folder . $hash . ".js";
+$js_file_name_min = $temp_folder . $hash . ".min.js";
+$js_file_name_min_map = $temp_folder . $hash . ".min.js.map";
 $js_file = fopen($js_file_name, "w");
 fwrite($js_file, $js_file_content);
 fclose($js_file);
@@ -244,5 +247,7 @@ $zip->close();
 @unlink($js_file_name);
 @unlink($js_file_name_min);
 @unlink($js_file_name_min_map);
+
+rmdir($temp_folder);
 
 ReturnJSON(true, "OK", ["href"=>$archive_link]);
