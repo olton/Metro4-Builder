@@ -24,8 +24,20 @@ function addComponent($part, $name, $type){
     $path = $config['parts'][$part][1];
 
     if (isset($config[$part][$name][$type])) foreach ($config[$part][$name][$type] as $file) {
-        if (!isset($build[$part][$type]["$file"]))
-            $build[$part][$type]["$file"] = $source_path . $path .($part === 'components' ? "/$name/" : "/"). "$file.$type";
+        if (!isset($build[$part][$type][$file])) {
+            if ($name === "resizable" || $name === "resizeable") {
+
+                $name = "resizeable";
+
+                if ($type === "less") {
+                    $file = "resizeable";
+                }
+                if ($type === "js") {
+                    $file = "resizable";
+                }
+            }
+            $build[$part][$type][$file] = $source_path . $path . ($part === 'components' ? "/$name/" : "/") . "$file.$type";
+        }
     }
 }
 
