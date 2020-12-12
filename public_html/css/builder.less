@@ -2,83 +2,99 @@
 
 }
 
-#header {
-    transition: background-color .3s linear;
-    //background-color: #E25825 !important;
+body {
+    background: transparent url("../images/d.svg") top left no-repeat;
+    background-size: cover;
 }
 
-.scrolled-header {
-    background-color: #E25825 !important;
-    color: #fff;
+.new-hero {
+    padding: 20px;
 }
 
-.hero {
-    padding-left: 40px;
-    padding-right: 40px;
-    background: url("../images/bg.png") center center no-repeat;
-    background-size: 100% 100%;
+@media screen and (min-width: 1000px) {
+    .new-hero-container {
+        padding-top: 120px;
+    }
+
+    .new-hero {
+        padding: 90px 40px 0 80px;
+    }
 }
 
-.hero-image-holder {
-    background: url("../images/bob4.png") center center no-repeat;
-    background-size: contain;
-}
-
-.features-list {
-    margin: 0;
-    padding: 0;
+#loader {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
-    label {
+.elements-group {
+    margin: 20px 0;
+    padding-bottom: 10px;
+}
+
+.elements {
+    .checkbox {
         width: 100%;
     }
 }
 
-@media screen and (min-width: 576px) {
-    .features-list label {
-        width: 50%;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    //#header {
-    //    background-color: transparent !important;
-    //}
-    .features-list label {
-        width: 33.3%;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .features-list label {
-        width: 25%;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .features-list label {
-        width: 15%;
-    }
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-}
-
-footer {
-    color: #707070;
-    a {
-        color: #aaaaaa;
-        &:hover {
-            color: #fff;
+@media screen and (min-width: 576px){
+    .elements {
+        .checkbox {
+            width: 50%;
         }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .hero {
-        height: 700px;
+@media screen and (min-width: 768px){
+    .elements {
+        .checkbox {
+            width: 33.3%;
+        }
     }
+}
+
+@media screen and (min-width: 1200px){
+    .elements {
+        .checkbox {
+            width: 25%;
+        }
+    }
+}
+
+.checkbox, .switch {
+    .check {
+        border-color: darkred;
+    }
+}
+
+.switch {
+    .check::after {
+        background-color: darkred;
+        border-color: darkred;
+    }
+}
+
+.checkbox input[type=checkbox]:checked~.check,
+.switch input[type=checkbox]:checked~.check
+{
+    border-color: darkred;
+    background-color: darkred;
+}
+
+@keyframes flash-bg {
+    0% {
+        background-color: transparent;
+    }
+    30% {
+        background-color: #eaa5a5;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.flash-checkbox {
+    animation: flash-bg 1s ease-out;
+    animation-iteration-count: 1;
 }

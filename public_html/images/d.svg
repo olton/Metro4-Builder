@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1439px" height="455px" viewBox="0 0 1439 455" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Path 15</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="120.544575%" y1="51.6247155%" x2="10.5994899%" y2="51.2153108%" id="linearGradient-1">
+            <stop stop-color="#ff6969" offset="0%"></stop>
+            <stop stop-color="#8B0000" stop-opacity="0.2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.199999988">
+        <g id="ManyPixels-Home" transform="translate(-1.000000, -5771.000000)" fill="url(#linearGradient-1)">
+            <path d="M1,5771 C65.6666667,5837 118,5861.66667 158,5845 C218,5820 345,5829 242,6042 C173.333333,6184 372.666667,6192.33333 840,6067 C1052.66667,5962.33333 1192.66667,5932 1260,5976 C1327.33333,6020 1387.66667,6053.66667 1441,6077 L1441,6226 L1,6226 L1,5771 Z" id="Path-15"></path>
+        </g>
+    </g>
+</svg>

@@ -3,121 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Serhii Pimenov">
+    <meta name="country" content="Ukraine">
+    <meta name="description" content="Build your own set of Metro 4 Components">
+    <meta name="keywords" content="Build, Builder, Metro, Metro4, Metro UI CSS, HTML, CSS, JS, CSS3, Javascript, HTML5, UI, Library, Web, Development, Framework">
 
-<!--    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">-->
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="//cdn.metroui.org.ua/v4-dev/css/metro-all.min.css">
     <link rel="stylesheet" href="css/builder.css">
 
     <title>Metro 4 Builder</title>
-
-<!--    Global site tag (gtag.js) - Google Analytics -->
-<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152879544-1"></script>-->
-<!--    <script>-->
-<!--        window.dataLayer = window.dataLayer || [];-->
-<!--        function gtag(){dataLayer.push(arguments);}-->
-<!--        gtag('js', new Date());-->
-
-<!--        gtag('config', 'UA-152879544-1');-->
-<!--    </script>-->
-
 </head>
-<body>
-    <div id="header" class="container-fluid pos-fixed fixed-top w-100 z-fixed pl-0 pr-0">
-        <nav data-role="app-bar" class="container bg-transparent pos-relative pl-0 pr-0" data-expand-point="md">
-            <a href="index.html" class="brand no-hover text-bold fg-white">Metro 4 Builder</a>
-            <ul class="app-bar-menu ml-auto fg-white">
-                <li><a href="build.html">Build</a></li>
-                <li><a href="https://metroui.org.ua">Documentation</a></li>
-                <li><a href="https://github.com/olton/Metro-UI-CSS">GitHub</a></li>
+<body class="m4-cloak d-flex flex-column" style="padding-top: 52px">
+
+    <div class="container-fluid pos-fixed fixed-top z-top bg-transparent fg-dark" id="header">
+        <header class="app-bar container bg-transparent pos-relative" data-role="appbar" data-on-before-menu-open="appBarMenuOpen" data-on-menu-close="appBarMenuClose" data-expand-point="md" data-on-media-point="headerMediaPoint">
+            <a href="index.html" class="brand no-hover text-bold">METRO_4 :: BUILDER</a>
+            <ul class="app-bar-menu ml-auto text-upper">
+                <li><a href="index.html" class="app-bar-item">Home</a></li>
+                <li><a href="build.html" class="app-bar-item">Build</a></li>
+                <li><a href="//metroui.org.ua" class="app-bar-item">Metro 4</a></li>
+                <li><a href="//metroui.org.ua/support.html" class="app-bar-item text-bold fg-darkRed">Support</a></li>
             </ul>
-        </nav>
+        </header>
     </div>
 
-    <div class="hero bg-hero">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="cell-lg-6">
-                    <div class="display3 fg-white">
-                        <span class="reduce-2 enlarge-md">Metro 4 Builder <small>dev</small></span>
-                    </div>
-                    <div class="text-leader2 fg-white">
-                        <div class="reduce-2 enlarge-md">
-                            Metro 4 is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins.
-                            <br>
-                            <br>
-                            Create your own Metro 4 components set in minutes with special builder...
+    <div class="container-fluid hero-wrapper">
+        <div class="container new-hero-container">
+            <div class="row">
+                <div class="cell-lg-6 order-2 order-lg-1">
+                    <div class="new-hero text-center text-left-lg">
+                        <div class="display2 fg-dark text-bold mt-0" style="line-height: 1">
+                            <span class="reduce-2">Build your own set of Metro 4 Components</span>
+                        </div>
+
+                        <div class="text-leader2 mt-4 mb-4">
+                            I have created a large set of components for you. Choose what you will use!
+                        </div>
+
+                        <div class="mt-8">
+                            <a href="build.html" class="m-1 button text-upper info"><span>Build your set</span></a>
+                            <a href="//github.com/olton/Metro-UI-CSS" class="m-1 button warning text-upper"><span>Get source</span></a>
                         </div>
                     </div>
-                    <div class="text-small mt-4">
-                        Assembly can be built for versions: <!--<span class="text-bold" id="assembly-version-release"></span> (release) or --><span class="text-bold" id="assembly-version-next"></span> (dev)
-                    </div>
-                    <div class="mt-8">
-                        <button class="button alert" onclick="document.location.href='build.html'">Create your own set now <span class="mif-arrow-right"></span></button>
-                    </div>
                 </div>
-                <div class="cell-lg-6 d-none d-block-lg hero-image-holder">
+
+                <div class="cell-lg-6 order-1 order-lg-2">
+                    <img src="images/fornite.svg" alt="ui design" class="w-100 mt-5">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid bg-light d-none">
-        <div class="container pt-20 pb-20">
-            <p class="text-leader">
-                Metro 4 is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with responsive grid system, extensive prebuilt components, and powerful plugins.
-            </p>
+    <div class="container-fluid mt-auto">
+        <div class="container">
+            <div class="text-center text-small p-2">
+                Copyright 2020 by <a class="fg-darkRed" href="//pimenov.com.ua">Serhii Pimenov</a>. All rights reserved.
+            </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container pt-10 pb-20">
-            <div class="row">
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Support</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li><a href="https://github.com/olton/Metro4-UI-CSS/issues" class="fg-gray fg-cyan-hover no-decor">Metro 4 Issues</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Docs/issues" class="fg-gray fg-cyan-hover no-decor">Docs Issues</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Builder/issues" class="fg-gray fg-cyan-hover no-decor">Builder Issues</a></li>
-                    </ul>
-                </div>
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Download</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li><a href="https://github.com/olton/Metro-UI-CSS" class="fg-gray fg-cyan-hover no-decor">Metro 4</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Builder" class="fg-gray fg-cyan-hover no-decor">Builder</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Docs" class="fg-gray fg-cyan-hover no-decor">Metro 4 Docs</a></li>
-                    </ul>
-                </div>
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Documentation</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li><a href="https://metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 Core</a></li>
-                        <li><a href="https://react.metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 for React</a></li>
-                        <li><a href="https://morrisjdev.github.io/ng-metro4/#/" class="fg-gray fg-cyan-hover no-decor">Metro 4 for Angular</a></li>
-                    </ul>
-                </div>
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Sponsors</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li>Domain by <a href="https://imena.ua">Imena.ua</a></li>
-                        <li>Hosting by <a href="https://mirohost.net">Mirohost</a></li>
-                        <li>IDE PhpStorm by <a href="https://jetbrains.com">JetBrains</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <hr class="thin" style="background: #333">
-
-            <div class="d-flex mt-4 flex-column flex-row-md" style="color: #707070">
-                <small>Copyright 2019-2020 by Serhii Pimenov. Ver 2020.2. All rights reserved.</small>
-                <small class="ml-auto-md"><span class="fg-cyan">Made in </span><span class="fg-yellow">Ukraine</span></span></small>
-            </div>
-
-        </div>
-    </footer>
-
-<!--    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>-->
-    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="//cdn.metroui.org.ua/v4-dev/js/metro.min.js"></script>
+    <script src="js/appbar.js"></script>
 </body>
 </html>

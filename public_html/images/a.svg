@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1392px" height="1546px" viewBox="0 0 1392 1546" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Path 11</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="71.7027963%" y1="0%" x2="18.0166944%" y2="62.172774%" id="linearGradient-1">
+            <stop stop-color="#ff6969" offset="0%"></stop>
+            <stop stop-color="#8B0000" stop-opacity="0.2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.199999988">
+        <g id="ManyPixels-Home" transform="translate(-14.000000, -1576.000000)" fill="url(#linearGradient-1)">
+            <path d="M444.959322,1817.82877 C641.136998,1744.29687 787.113547,1678.39565 882.888969,1620.12509 C1026.5521,1532.71926 1422.14624,1545.20581 1405.48964,1973.91061 C1388.83305,2402.61542 891.911291,1989.02381 878.030795,2351.1337 C864.150299,2713.24358 444.959322,2465.59372 444.959322,2998.35309 C444.959322,3282.33664 -118.267932,3078.93963 43.0447283,2368.27049 C98.5925197,2123.55256 232.564051,1940.07198 444.959322,1817.82877 Z" id="Path-11"></path>
+        </g>
+    </g>
+</svg>

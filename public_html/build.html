@@ -3,115 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="Serhii Pimenov">
+    <meta name="country" content="Ukraine">
+    <meta name="description" content="Build your own set of Metro 4 Components">
+    <meta name="keywords" content="Build, Builder, Metro, Metro4, Metro UI CSS, HTML, CSS, JS, CSS3, Javascript, HTML5, UI, Library, Web, Development, Framework">
 
-    <!--    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">-->
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.css">
+    <link rel="stylesheet" href="//cdn.metroui.org.ua/v4-dev/css/metro-all.min.css">
     <link rel="stylesheet" href="css/builder.css">
 
-    <title>Build your set</title>
-    <script>
-        var metroCheckboxSetup = {
-            style: 2
-        };
-    </script>
+    <title>Select components to build :: Metro 4 Builder</title>
 </head>
-<body class="m4-cloak" style="padding-top: 52px">
-    <div class="container-fluid pos-fixed fixed-top w-100 z-fixed border-bottom bd-lightGray scrolled-header">
-        <nav data-role="app-bar" class="container pos-relative bg-transparent" data-expand-point="md">
-            <a href="index.html" class="brand no-hover text-bold">Metro 4 Builder</a>
-            <ul class="app-bar-menu ml-auto">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="https://metroui.org.ua">Docs</a></li>
-                <li><a href="https://github.com/olton/Metro-UI-CSS">GitHub</a></li>
+<body class="m4-cloak d-flex flex-column" style="padding-top: 52px">
+    <div class="container-fluid pos-fixed fixed-top z-top bg-transparent fg-dark" id="header">
+        <header class="app-bar container bg-white pos-relative" data-role="appbar" data-expand-point="md">
+            <a href="index.html" class="brand no-hover text-bold">METRO_4 :: BUILDER</a>
+            <ul class="app-bar-menu ml-auto text-upper">
+                <li><a href="index.html" class="app-bar-item">Home</a></li>
+                <li><a href="build.html" class="app-bar-item">Build</a></li>
+                <li><a href="//metroui.org.ua" class="app-bar-item">Metro 4</a></li>
+                <li><a href="//metroui.org.ua/support.html" class="app-bar-item text-bold fg-darkRed">Support</a></li>
             </ul>
-        </nav>
+        </header>
     </div>
 
-    <div class="container-fluid mb-10">
-        <div class="container pt-4">
-            <h1>Build your set</h1>
-            <hr>
+    <div class="container-fluid">
+        <div class="container">
+            <h1 class="mt-2 ml-2 mr-2">Select components to build</h1>
+            <div class="text-leader2">
+                All components stored and are assembled directly from GitHub.com.
+            </div>
 
-            <form action="javascript:" enctype="multipart/form-data" onsubmit="requestBuild(this)">
-                <div class="form-actions mt-4 mb-4 d-flex flex-wrap flex-align-center">
+            <form action="javascript:" method="post" enctype="multipart/form-data" onsubmit="requestBuild(this)">
+                <div class="form-actions mt-4 mb-4 d-flex flex-wrap flex-align-center op-red p-4">
                     <div class="text-center text-left-md w-100 w-auto-md">
-                        <button class="button warning rounded">Build your set</button>
+                        <button class="button alert">Build your set</button>
                     </div>
                     <div class="ml-auto-md mt-4 mt-0-md w-100 w-auto-md d-flex flex-justify-center">
-                        <input type="checkbox" data-role="switch" data-caption="Minify" checked name="minified">
-                        <input type="checkbox" data-role="switch" data-caption="Map" checked name="source_map">
-                        <input type="checkbox" data-role="switch" data-caption="Dev" name="build_from_dev">
+                        <input type="checkbox" data-role="switch" data-caption="Minify code" checked name="minified">
+                        <input type="checkbox" data-role="switch" data-caption="Source map" checked name="source_map">
                     </div>
                 </div>
-                <hr>
-                <div id="selection-bar">
-                    <div class="part-required d-none">
-                        <div class="h3">Required</div>
-                        <div class="features-list remark warning p-4">
-                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="reset.css">
-                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="m4q.js">
-                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="metro.js">
-                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="utilities.js">
-                            <input type="checkbox" data-role="checkbox" checked readonly data-caption="types-ext.js">
-                        </div>
+
+                <div id="lobby" class="mt-10 mb-10 pl-2 pr-2">
+                    <div id="loader" class="p-20">
+                        <div data-role="activity" data-type="atom" data-style="color"></div>
                     </div>
                 </div>
-                <div class="form-actions mt-4 mb-4 d-flex flex-align-center">
-                    <button class="button warning rounded">Build your set</button>
+
+                <div class="form-actions mt-4 mb-4 d-flex flex-wrap flex-align-center op-red p-4">
+                    <div class="text-center text-left-md w-100 w-auto-md">
+                        <button class="button alert">Build your set</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <footer>
-        <div class="container pt-10 pb-20">
-            <div class="row">
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Support</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li><a href="https://github.com/olton/Metro4-UI-CSS/issues" class="fg-gray fg-cyan-hover no-decor">Metro 4 Issues</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Docs/issues" class="fg-gray fg-cyan-hover no-decor">Docs Issues</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Builder/issues" class="fg-gray fg-cyan-hover no-decor">Builder Issues</a></li>
-                    </ul>
-                </div>
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Download</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li><a href="https://github.com/olton/Metro-UI-CSS" class="fg-gray fg-cyan-hover no-decor">Metro 4</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Builder" class="fg-gray fg-cyan-hover no-decor">Builder</a></li>
-                        <li><a href="https://github.com/olton/Metro4-Docs" class="fg-gray fg-cyan-hover no-decor">Metro 4 Docs</a></li>
-                    </ul>
-                </div>
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Documentation</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li><a href="https://metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 Core</a></li>
-                        <li><a href="https://react.metroui.org.ua" class="fg-gray fg-cyan-hover no-decor">Metro 4 for React</a></li>
-                        <li><a href="https://morrisjdev.github.io/ng-metro4/#/" class="fg-gray fg-cyan-hover no-decor">Metro 4 for Angular</a></li>
-                    </ul>
-                </div>
-                <div class="cell-md-3">
-                    <div class="text-upper text-bold">Sponsors</div>
-                    <ul class="no-style ml-0 reduce-1">
-                        <li>Domain by <a href="https://imena.ua">Imena.ua</a></li>
-                        <li>Hosting by <a href="https://mirohost.net">Mirohost</a></li>
-                        <li>IDE PhpStorm by <a href="https://jetbrains.com">JetBrains</a></li>
-                    </ul>
-                </div>
+    <div class="container-fluid mt-auto">
+        <div class="container">
+            <div class="text-center text-small p-2">
+                Copyright 2020 by <a class="fg-darkRed" href="//pimenov.com.ua">Serhii Pimenov</a>. All rights reserved.
             </div>
-
-            <hr class="thin" style="background: #333">
-
-            <div class="d-flex mt-4 flex-column flex-row-md" style="color: #707070">
-                <small>Copyright 2019 by Serhii Pimenov. Ver - 2020.2. All rights reserved.</small>
-                <small class="ml-auto-md"><span class="fg-cyan">Made in </span><span class="fg-yellow">Ukraine</span></span></small>
-            </div>
-
         </div>
-    </footer>
+    </div>
 
-    <!--    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>-->
-    <script src="https://cdn.metroui.org.ua/v4/js/metro.js"></script>
-    <script src="js/build.js"></script>
+    <script src="//cdn.metroui.org.ua/v4-dev/js/metro.min.js"></script>
+    <script src="js/lobby.js"></script>
+    <script src="js/appbar.js"></script>
 </body>
 </html>
