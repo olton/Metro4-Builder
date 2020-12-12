@@ -68,7 +68,7 @@ $copyright = str_replace(['%VER%', '%TIME%', '%YEAR%'], [$ver_number, date("d/m/
 $less_file_content = $copyright;
 $js_file_content = $copyright . "\n";
 
-// Add required css
+// Add required less
 foreach (['vars', 'mixins', 'default-icons'] as $file) {
     $build['include'][$file] = $source_path . "include/$file.less";
 }
@@ -116,7 +116,10 @@ $js_file_content .= clear_js(file_get_contents($source_path . "/core/metro.js"))
 
 // Add default locale if specified components selected
 $us = false;
-if (count($parts['components']) && count(array_intersect(['calendar', 'calendarpicker', 'countdown', 'datepicker', 'dialog', 'table', 'timepicker', 'validator'], $parts['components']))) {
+if (
+    count($parts['components']) &&
+    count(array_intersect(['calendar', 'calendarpicker', 'countdown', 'datepicker', 'dialog', 'table', 'timepicker', 'validator'], $parts['components']))
+) {
     if (does_url_exists($source_path . "/i18n/en-US.js")) {
         $us = true;
         $js_file_content .= clear_js(file_get_contents($source_path . "/i18n/en-US.js"));

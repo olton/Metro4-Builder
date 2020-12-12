@@ -1,0 +1,14 @@
+#order deny,allow
+#deny from all
+#allow from 185.124.168.252 
+#allow from 178.209.116.106
+
+#RewriteEngine On 
+#RewriteCond %{SERVER_PORT} 80 
+#RewriteRule ^(.*)$ https://builder.metroui.org.ua/$1 [R,L]
+
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} builder.metroui.org.ua
+#RewriteRule (.*) http://metroui.org.ua/$1 [R=301,L]
+
+    

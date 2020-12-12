@@ -28,14 +28,14 @@
     </div>
 
     <div class="container-fluid mb-10">
-        <div class="container">
+        <div class="container pt-4">
             <h1>Build your set</h1>
             <hr>
 
             <form action="javascript:" enctype="multipart/form-data" onsubmit="requestBuild(this)">
                 <div class="form-actions mt-4 mb-4 d-flex flex-wrap flex-align-center">
                     <div class="text-center text-left-md w-100 w-auto-md">
-                        <button class="button warning">Build set</button>
+                        <button class="button warning rounded">Build your set</button>
                     </div>
                     <div class="ml-auto-md mt-4 mt-0-md w-100 w-auto-md d-flex flex-justify-center">
                         <input type="checkbox" data-role="switch" data-caption="Minify" checked name="minified">
@@ -45,7 +45,7 @@
                 </div>
                 <hr>
                 <div id="selection-bar">
-                    <div class="part-required">
+                    <div class="part-required d-none">
                         <div class="h3">Required</div>
                         <div class="features-list remark warning p-4">
                             <input type="checkbox" data-role="checkbox" checked readonly data-caption="reset.css">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="form-actions mt-4 mb-4 d-flex flex-align-center">
-                    <button class="button warning">Build set</button>
+                    <button class="button warning rounded">Build your set</button>
                 </div>
             </form>
         </div>

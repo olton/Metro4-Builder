@@ -1,7 +1,7 @@
 {
     "setup": {
-        "release": "4.3.9",
-        "next": "4.3.10"
+        "release": "4.4.1",
+        "next": "4.4.2"
     },
 
     "parts": {
@@ -26,10 +26,6 @@
             "name": "Cursors",
             "less": ["cursors"]
         },
-        "default_icons": {
-            "name": "Default icons",
-            "less": ["default-icons"]
-        },
         "display": {
             "name": "Display",
             "less": ["display"]
@@ -53,10 +49,6 @@
         "images": {
             "name": "Images",
             "less": ["images"]
-        },
-        "inputs": {
-            "name": "Inputs",
-            "less": ["inputs"]
         },
         "lists": {
             "name": "Lists",
@@ -97,6 +89,10 @@
         "print": {
             "name": "Print",
             "less": ["print"]
+        },
+        "scrollbar": {
+            "name": "Scrollbar",
+            "less": ["scrollbar"]
         }
     },
 
@@ -397,6 +393,10 @@
                 "components": ["wheelpicker"]
             }
         },
+        "default-icons": {
+            "name": "Default icons",
+            "less": ["default-icons"]
+        },
         "dialog": {
             "name": "Dialog",
             "js": ["dialog"],
@@ -448,8 +448,7 @@
             "js": ["file"],
             "less": ["file"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["button"]
+                "components": ["input-common","button"]
             }
         },
         "form": {
@@ -509,6 +508,11 @@
             "js": ["image-compare"],
             "less": ["image-compare"]
         },
+        "image-grid": {
+            "name": "Image grid",
+            "js": ["image-grid"],
+            "less": ["image-grid"]
+        },
         "image-magnifier": {
             "name": "Image magnifier",
             "js": ["image-magnifier"],
@@ -527,13 +531,20 @@
             "name": "Info panel",
             "less": ["info-panel"]
         },
+        "input-common": {
+            "name": "Input common",
+            "less": ["input-common"]
+        },
+        "input-mask": {
+            "name": "Input mask",
+            "js": ["input-mask"]
+        },
         "input": {
             "name": "Input",
             "js": ["input"],
             "less": ["input"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["button"]
+                "components": ["input-common","button"]
             }
         },
         "input-material": {
@@ -541,7 +552,7 @@
             "js": ["input-material"],
             "less": ["input-material"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "components": ["input-common"]
             }
         },
         "keypad": {
@@ -549,8 +560,13 @@
             "js": ["keypad"],
             "less": ["keypad"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "components": ["input-common"]
             }
+        },
+        "lightbox": {
+            "name": "Lightbox",
+            "js": ["lightbox"],
+            "less": ["lightbox"]
         },
         "list": {
             "name": "List",
@@ -618,7 +634,7 @@
             "js": ["radio"],
             "less": ["radio"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "components": ["input-common"]
             }
         },
         "rating": {
@@ -629,7 +645,7 @@
                 "common-js": ["colors"]
             }
         },
-        "resizable": {
+        "resizeable": {
             "name": "Resizable",
             "js": ["resizable"],
             "less": ["resizable"]
@@ -653,8 +669,7 @@
             "js": ["select"],
             "less": ["select"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["input", "checkbox", "dropdown", "tag"]
+                "components": ["input-common","input", "checkbox", "dropdown", "tag"]
             }
         },
         "select2": {
@@ -708,8 +723,7 @@
             "js": ["spinner"],
             "less": ["spinner"],
             "dependencies": {
-                "components": ["button"],
-                "common-css": ["inputs"]
+                "components": ["input-common","button"]
             }
         },
         "split-button": {
@@ -740,7 +754,7 @@
             "js": ["switch"],
             "less": ["switch"],
             "dependencies": {
-                "common-css": ["inputs"]
+                "components": ["input-common"]
             }
         },
         "t-menu": {
@@ -779,29 +793,20 @@
             "js": ["tag-input"],
             "less": ["tag-input"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["tag", "button"],
+                "components": ["input-common","tag", "button"],
                 "common-js": ["colors"]
             }
         },
-        "tpl":{
-            "name": "Micro Templating",
-            "js": ["template-engine"]
-        },
         "template":{
             "name": "Template",
-            "js": ["template"],
-            "dependencies": {
-                "components": ["tpl"]
-            }
+            "js": ["template"]
         },
         "textarea": {
             "name": "Textarea",
             "js": ["textarea"],
             "less": ["textarea"],
             "dependencies": {
-                "common-css": ["inputs"],
-                "components": ["button"]
+                "components": ["input-common","button"]
             }
         },
         "tile": {
@@ -824,6 +829,10 @@
             "name": "Toast",
             "js": ["toast"],
             "less": ["toast"]
+        },
+        "tokenizer": {
+            "name": "Tokenizer",
+            "js": ["tokenizer"]
         },
         "toolbar": {
             "name": "Toolbar",
@@ -879,8 +888,7 @@
             "js": ["wizard"],
             "less": ["wizard"],
             "dependencies": {
-                "components": ["button"],
-                "common-css": ["default-icons"]
+                "components": ["default-icons","button"]
             }
         }
     },
